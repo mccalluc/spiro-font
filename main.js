@@ -1,4 +1,4 @@
-export function getFont() {
+export function makeFont(targetChar) {
   // Create the bézier paths for each of the glyphs.
   // Note that the .notdef glyph is required.
   const notdefGlyph = new opentype.Glyph({
@@ -7,24 +7,20 @@ export function getFont() {
     advanceWidth: 650,
     path: new opentype.Path()
   });
-
   const glyphs = [notdefGlyph];
-  for (let ascii = 65; ascii < 65 + 3; ascii++) {
-    const aPath = new opentype.Path();
-    aPath.moveTo(100, 0);
-    aPath.lineTo(100, 700);
-    aPath.lineTo(100, 800);
-    aPath.lineTo(300, 300);
-    // more drawing instructions...
-    const aGlyph = new opentype.Glyph({
-      name: String.fromCharCode(ascii),
-      unicode: ascii,
-      advanceWidth: 650,
-      path: aPath
-    });
-    glyphs.push(aGlyph)
-  }
-  console.log(glyphs)
+  const aPath = new opentype.Path();
+  aPath.moveTo(100, 0);
+  aPath.lineTo(100, 700);
+  aPath.lineTo(100, 800);
+  aPath.lineTo(500, 500);
+  // more drawing instructions...
+  const aGlyph = new opentype.Glyph({
+    name: targetChar,
+    unicode: targetChar.codePointAt(),
+    advanceWidth: 650,
+    path: aPath
+  });
+  glyphs.push(aGlyph)
 
   const font = new opentype.Font({
     familyName: 'Demo',
@@ -41,7 +37,7 @@ function fontAsBase64(font) {
   return btoa(String.fromCharCode.apply(null, new Uint8Array(font.toArrayBuffer())));
 }
 
-export function getCssFontFace(fontName, font) {
+export function makeCssFontFace(fontName, font) {
   const fontBase64 = fontAsBase64(font);
   return `
 @font-face {
