@@ -1,0 +1,38 @@
+export default function main() {
+  // Create the bézier paths for each of the glyphs.
+  // Note that the .notdef glyph is required.
+  const notdefGlyph = new opentype.Glyph({
+    name: '.notdef',
+    unicode: 0,
+    advanceWidth: 650,
+    path: new opentype.Path()
+  });
+
+  const glyphs = [notdefGlyph];
+  for (let ascii = 65; ascii < 65 + 26; ascii++) {
+    const aPath = new opentype.Path();
+    aPath.moveTo(100, 0);
+    aPath.lineTo(100, 700);
+    aPath.lineTo(100, 800);
+    aPath.lineTo(300, 300);
+    // more drawing instructions...
+    const aGlyph = new opentype.Glyph({
+      name: String.fromCharCode(ascii),
+      unicode: ascii,
+      advanceWidth: 650,
+      path: aPath
+    });
+    glyphs.push(aGlyph)
+  }
+  console.log(glyphs)
+
+  const font = new opentype.Font({
+    familyName: 'Demo',
+    styleName: 'Medium',
+    unitsPerEm: 1000,
+    ascender: 800,
+    descender: -200,
+    glyphs: glyphs
+  });
+  font.download();
+}
