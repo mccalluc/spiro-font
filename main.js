@@ -1,4 +1,4 @@
-function getFont() {
+export function getFont() {
   // Create the bézier paths for each of the glyphs.
   // Note that the .notdef glyph is required.
   const notdefGlyph = new opentype.Glyph({
@@ -48,7 +48,7 @@ export default function main(iframeId) {
   // font.download();
 }
 
-function getCssFontFace(fontName, font) {
+export function getCssFontFace(fontName, font) {
   const fontBase64 = fontAsBase64(font);
   return `
 @font-face {
