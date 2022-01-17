@@ -41,13 +41,6 @@ function fontAsBase64(font) {
   return btoa(String.fromCharCode.apply(null, new Uint8Array(font.toArrayBuffer())));
 }
 
-export default function main(iframeId) {
-  const font = getFont();
-  const base64 = fontAsBase64(font);
-  console.log(base64);
-  // font.download();
-}
-
 export function getCssFontFace(fontName, font) {
   const fontBase64 = fontAsBase64(font);
   return `
@@ -55,26 +48,4 @@ export function getCssFontFace(fontName, font) {
   font-family: "${fontName}";
   src: url('data:font/opentype;base64,${fontBase64}');
 }`;
-}
-
-function getIframeHtml() {
-  const font = getFont();
-  const fontName = 'Demo';
-  return `
-<html>
-  <!DOCTYPE html>
-  <head>
-  <style>
-    ${getCssFontFace(fontName, font)}
-    body { font-family: '${fontName}'; }
-  </style>
-  </head>
-  <body>
-    ABC
-  </body>
-</html>`;
-}
-
-export function getIframeSrc() {
-  return `data:text/html,${encodeURIComponent(getIframeHtml())}`
 }
