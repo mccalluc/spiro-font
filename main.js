@@ -48,27 +48,29 @@ export default function main(iframeId) {
   // font.download();
 }
 
+function getCssFontFace(fontName, font) {
+  const fontBase64 = fontAsBase64(font);
+  return `
+@font-face {
+  font-family: "${fontName}";
+  src: url('data:font/opentype;base64,${fontBase64}');
+}`;
+}
+
 function getIframeHtml() {
   const font = getFont();
-  const fontBase64 = fontAsBase64(font);
+  const fontName = 'Demo';
   return `
 <html>
   <!DOCTYPE html>
   <head>
   <style>
-    @font-face {
-      font-family: "Demo";
-      src: url('data:font/opentype;base64,${fontBase64}');
-    }
-
-    h1 {
-      font-family: 'Demo', sans-serif;
-      color: red;
-    }
+    ${getCssFontFace(fontName, font)}
+    body { font-family: '${fontName}'; }
   </style>
   </head>
   <body>
-    <h1>ABC</h1>
+    ABC
   </body>
 </html>`;
 }
