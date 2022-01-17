@@ -1,4 +1,4 @@
-export default function main() {
+function getFont() {
   // Create the bézier paths for each of the glyphs.
   // Note that the .notdef glyph is required.
   const notdefGlyph = new opentype.Glyph({
@@ -9,7 +9,7 @@ export default function main() {
   });
 
   const glyphs = [notdefGlyph];
-  for (let ascii = 65; ascii < 65 + 26; ascii++) {
+  for (let ascii = 65; ascii < 65 + 3; ascii++) {
     const aPath = new opentype.Path();
     aPath.moveTo(100, 0);
     aPath.lineTo(100, 700);
@@ -34,5 +34,45 @@ export default function main() {
     descender: -200,
     glyphs: glyphs
   });
-  font.download();
+  return font;
+}
+
+function fontAsBase64(font) {
+  return btoa(String.fromCharCode.apply(null, new Uint8Array(font.toArrayBuffer())));
+}
+
+export default function main(iframeId) {
+  const font = getFont();
+  const base64 = fontAsBase64(font);
+  console.log(base64);
+  // font.download();
+}
+
+function getIframeHtml() {
+  const font = getFont();
+  const fontBase64 = fontAsBase64(font);
+  return `
+<html>
+  <!DOCTYPE html>
+  <head>
+  <style>
+    @font-face {
+      font-family: "Demo";
+      src: url('data:font/opentype;base64,${fontBase64}');
+    }
+
+    h1 {
+      font-family: 'Demo', sans-serif;
+      color: red;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>ABC</h1>
+  </body>
+</html>`;
+}
+
+export function getIframeSrc() {
+  return `data:text/html,${encodeURIComponent(getIframeHtml())}`
 }

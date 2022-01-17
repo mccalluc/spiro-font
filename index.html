@@ -3,13 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>spiro-font</title>
+    <style>
+      iframe {
+        height: 200px;
+        width: 200px;
+      }
+    </style>
   </head>
   <body>
-    <p>TODO</p>
+    <p>Thanks to <a href="https://github.com/staff-code/opentype.js#readme">opentype.js</a>!</p>
+    <iframe id="container"></iframe>
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <script type="module">
-      import main from './main.js';
-      main();
+      import { getIframeSrc } from './main.js';
+      const iframeSrc = getIframeSrc();
+      document.getElementById('container').src = iframeSrc;
     </script>
   </body>
 </html>
