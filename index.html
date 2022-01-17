@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>spiro-font</title>
+  </head>
+  <body>
+    <p>TODO</p>
+    <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+    <script>
+      async function make() {
+        const font = await opentype.load('Roboto-Black.ttf');
+        const path = font.getPath('+', 0, 150, 72);
+        console.log(path);
+      }
+      make();
+    </script>
+  </body>
+</html>
