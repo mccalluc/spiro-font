@@ -1,33 +1,38 @@
-export function makeFont(targetChar) {
-  // Create the bézier paths for each of the glyphs.
-  // Note that the .notdef glyph is required.
+export function makeFont(fontName, targetChar) {
+  const glyphs = [];
+  const max = 1000;
+
+  // The .notdef glyph is required.
   const notdefGlyph = new opentype.Glyph({
     name: '.notdef',
     unicode: 0,
-    advanceWidth: 650,
+    advanceWidth: max,
     path: new opentype.Path()
   });
-  const glyphs = [notdefGlyph];
-  const aPath = new opentype.Path();
-  aPath.moveTo(100, 0);
-  aPath.lineTo(100, 700);
-  aPath.lineTo(100, 800);
-  aPath.lineTo(500, 500);
+  glyphs.push(notdefGlyph);
+
+  const path = new opentype.Path();
+  // https://github.com/opentypejs/opentype.js
+  path.moveTo(500, 500);
+  path.quadTo(250, 500, 100, 100)
+  path.quadTo(1000, 0, 1000, 1000);
+  path.quadTo(250, 500, 100, 100)
+  path.lineTo(0, 1000);
   // more drawing instructions...
   const aGlyph = new opentype.Glyph({
     name: targetChar,
     unicode: targetChar.codePointAt(),
-    advanceWidth: 650,
-    path: aPath
+    advanceWidth: max,
+    path: path
   });
   glyphs.push(aGlyph)
 
   const font = new opentype.Font({
-    familyName: 'Demo',
+    familyName: fontName,
     styleName: 'Medium',
-    unitsPerEm: 1000,
-    ascender: 800,
-    descender: -200,
+    unitsPerEm: max,
+    ascender: max,
+    descender: 0,
     glyphs: glyphs
   });
   return font;
