@@ -1,65 +1,45 @@
-export function makeFont(fontName, targetChar) {
+import Stencil from './Stencil.js';
+
+const width = 16
+
+function makeGlyph(character, path) {
+  return new opentype.Glyph({
+    name: character,
+    unicode: character.codePointAt(),
+    advanceWidth: width,
+    path: path
+  });
+}
+
+export function makeFont(fontName) {
   const glyphs = [];
-  const max = 1000;
-  function scale(x) { return x * (max/2) + (max/2)}
 
   // The .notdef glyph is required.
   const notdefGlyph = new opentype.Glyph({
     name: '.notdef',
     unicode: 0,
-    advanceWidth: max,
+    advanceWidth: width,
     path: new opentype.Path()
   });
   glyphs.push(notdefGlyph);
 
-  const path = new opentype.Path();
-  // https://github.com/opentypejs/opentype.js
-  
-  const pull = -0.4;
-  const steps = 3;
-  const increment = 2 * Math.PI / steps
-  const controlPairs = [];
-  for (let i=0; i<=steps; i++) {
-    const theta = increment * i;
-    const outward = [Math.cos(theta), Math.sin(theta)];
-    const forward = [Math.cos(theta + increment * 2),
-                     Math.sin(theta + increment * 2)];
-    const inward = [pull * Math.cos(theta + increment * 1.5),
-                    pull * Math.sin(theta + increment * 1.5)];
-    const next = [Math.cos(theta + increment), Math.sin(theta + increment)];
-    controlPairs.push([outward, forward]);
-    controlPairs.push([forward, inward]);
-    controlPairs.push([inward, next]);
-  }
-  const firstPair = controlPairs.shift();
-  path.moveTo(
-    scale((firstPair[0][0] + firstPair[1][0])/2),
-    scale((firstPair[0][1] + firstPair[1][1])/2)
-  );
-  controlPairs.forEach(([lastControl, nextControl]) => {
-    path.quadTo(
-      scale(lastControl[0]),
-      scale(lastControl[1]),
-      scale((lastControl[0] + nextControl[0])/2),
-      scale((lastControl[1] + nextControl[1])/2),
-    );
-  })
-
-  console.log(path);
-  // more drawing instructions...
-  const aGlyph = new opentype.Glyph({
-    name: targetChar,
-    unicode: targetChar.codePointAt(),
-    advanceWidth: max,
-    path: path
-  });
-  glyphs.push(aGlyph)
+  const stencil = new Stencil();
+  glyphs.push(makeGlyph('0', stencil.getPath('A', 'C', 'D', 'E', 'F', 'G')));
+  glyphs.push(makeGlyph('1', stencil.getPath('F', 'G')));
+  glyphs.push(makeGlyph('2', stencil.getPath('A', 'B', 'C', 'E', 'F')));
+  glyphs.push(makeGlyph('3', stencil.getPath('A', 'B', 'C', 'F', 'G')));
+  glyphs.push(makeGlyph('4', stencil.getPath('B', 'D', 'F', 'G')));
+  glyphs.push(makeGlyph('5', stencil.getPath('A', 'B', 'C', 'D', 'G')));
+  glyphs.push(makeGlyph('6', stencil.getPath('A', 'B', 'C', 'D', 'E', 'G')));
+  glyphs.push(makeGlyph('7', stencil.getPath('A', 'F', 'G')));
+  glyphs.push(makeGlyph('8', stencil.getPath('A', 'B', 'C', 'D', 'E', 'F', 'G')));
+  glyphs.push(makeGlyph('9', stencil.getPath('A', 'B', 'C', 'D', 'F', 'G')));
 
   const font = new opentype.Font({
     familyName: fontName,
     styleName: 'Medium',
-    unitsPerEm: max,
-    ascender: max,
+    unitsPerEm: width, // Must be between 16 and 16384.
+    ascender: width,
     descender: 0,
     glyphs: glyphs
   });
