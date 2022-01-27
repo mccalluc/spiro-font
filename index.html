@@ -7,7 +7,9 @@
   <body>
     <p>The text below is rendered in a client-side generated font.
        Big thanks to <a href="https://github.com/opentypejs/opentype.js#readme">opentype.js</a>
-       for making this possible.</p>
+       for making this possible.
+       <a href="https://github.com/mccalluc/spiro-font">Source code on Github</a>.
+    </p>
     <div id="demo"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
@@ -24,7 +26,7 @@
       styleSheet.type = 'text/css';
       styleSheet.innerText = `
         ${makeCssFontFace(fontName, font)}
-        #${divId} { font-family: '${fontName}'; font-size: 30em; }
+        #${divId} { font-family: '${fontName}' }
       `;
       document.head.appendChild(styleSheet);
     </script>

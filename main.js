@@ -1,6 +1,6 @@
 import Stencil from './Stencil.js';
 
-const width = 16
+const width = 100;
 
 function makeGlyph(character, path) {
   return new opentype.Glyph({
@@ -39,7 +39,7 @@ export function makeFont(fontName) {
     familyName: fontName,
     styleName: 'Medium',
     unitsPerEm: width, // Must be between 16 and 16384.
-    ascender: width,
+    ascender: 160, // Must not be less than the max used by the paths.
     descender: 0,
     glyphs: glyphs
   });
