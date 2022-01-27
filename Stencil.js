@@ -1,5 +1,11 @@
+import { bufferPolygon } from "./geoUtils.js";
+
 function x10(points) {
-  return points.map((point) => [point[0] * 10, point[1] * 10])
+  const scaledUp = points.map((point) => [point[0] * 10, point[1] * 10]);
+  // Shrink the segments away from each other...
+  const eroded = bufferPolygon(scaledUp, -6, 1);
+  // and then expand with rounded corners...
+  return bufferPolygon(eroded, 4, 1)
 }
 
 export default class Stencil {
