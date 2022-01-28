@@ -11,7 +11,7 @@ export function drawPolygon(label, vertices){
   const polygon = paper.path(path).attr('fill','#444');
 
   const centroid = findCentroid(vertices);
-  const text = paper.text(centroid[0], centroid[1], label);
+  const text = paper.text(centroid[0], centroid[1], label).attr('fill', '#fff');
 
   paper.setStart();
 
