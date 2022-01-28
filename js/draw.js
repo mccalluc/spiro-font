@@ -18,8 +18,8 @@ export function drawPolygon(vertices){
       const cy = this.attr('cy') + dy;
       this.attr({cx, cy});
       
-      path[i][1] = Math.round(cx/10) * 10;
-      path[i][2] = Math.round(cy/10) * 10;
+      path[i][1] = round(cx);
+      path[i][2] = round(cy);
       
       polygon.attr({path});
     }
@@ -42,8 +42,12 @@ function onStart() {
 }
 
 function onEnd() {
-  const cx = Math.round(this.attr('cx')/10) * 10;
-  const cy = Math.round(this.attr('cy')/10) * 10;
+  const cx = round(this.attr('cx'));
+  const cy = round(this.attr('cy'));
   this.attr({cx, cy});
+}
+
+function round(x) {
+  return Math.round(x/10) * 10
 }
 
