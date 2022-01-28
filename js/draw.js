@@ -58,24 +58,22 @@ function round(x) {
 }
 
 function findCentroid(vertices) {
-  // https://stackoverflow.com/a/33852627
-  var off = vertices[0];
-  var twicearea = 0;
-  var x = 0;
-  var y = 0;
-  var p1,p2;
-  var f;
-  for (var i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
-    p1 = vertices[i];
-    p2 = vertices[j];
-    f = (p1[0] - off[0]) * (p2[1] - off[1]) - (p2[0] - off[0]) * (p1[1] - off[1]);
+  // Adapted from https://stackoverflow.com/a/33852627
+  let off = vertices[0];
+  let twicearea = 0;
+  let x = 0;
+  let y = 0;
+  for (let i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+    const p1 = vertices[i];
+    const p2 = vertices[j];
+    const f = (p1[0] - off[0]) * (p2[1] - off[1]) - (p2[0] - off[0]) * (p1[1] - off[1]);
     twicearea += f;
     x += (p1[0] + p2[0] - 2 * off[0]) * f;
     y += (p1[1] + p2[1] - 2 * off[1]) * f;
   }
-  f = twicearea * 3;
+  const sixArea = twicearea * 3;
   return [
-    x / f + off[0],
-    y / f + off[1]
+    x / sixArea + off[0],
+    y / sixArea + off[1]
   ];
 }
