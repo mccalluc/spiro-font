@@ -8,12 +8,12 @@ export function drawPolygon(vertices){
   ];    
 
   const paper = Raphael(document.getElementById('canvas'), 0, 0, 200, 200);
-  const polygon = paper.path(path).attr('fill','#F00');
+  const polygon = paper.path(path).attr('fill','#444');
 
   paper.setStart();
 
   for (let i = 0; i < vertices.length; i++) {
-    paper.circle(...vertices[i], 5).update = function(dx,dy) {
+    paper.circle(...vertices[i], 3).update = function(dx,dy) {
       const cx = this.attr('cx') + dx;
       const cy = this.attr('cy') + dy;
       this.attr({cx, cy});
@@ -26,7 +26,7 @@ export function drawPolygon(vertices){
   }
 
   const controls = paper.setFinish();
-  controls.attr({fill: '#00f'});  
+  controls.attr({fill: '#000', stroke: '#fff'});  
   controls.drag(onMove, onStart, onEnd);
 }
 
