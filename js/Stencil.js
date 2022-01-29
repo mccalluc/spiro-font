@@ -1,11 +1,12 @@
 import { bufferPolygon } from "./geometry.js";
 
 function x10(points) {
-  const scaledUp = points.map((point) => [point[0] * 10, point[1] * 10]);
+  // TODO: If the polygons are too small, this will error.
+  const scaledUp = points.map((point) => [point[0] * 10, 100 - (point[1] * 10)]);
   // Shrink the segments away from each other...
-  const eroded = bufferPolygon(scaledUp, -6, 1);
+  const eroded = bufferPolygon(scaledUp, -3, 1);
   // and then expand with rounded corners...
-  return bufferPolygon(eroded, 4, 1)
+  return bufferPolygon(eroded, 3.5, 2)
 }
 
 export default class Stencil {
@@ -13,7 +14,7 @@ export default class Stencil {
     self.segments = segments
   }
 
-  getPath(segmentNames) {
+  getFontPath(segmentNames) {
     const path = new opentype.Path();
     const segments = self.segments;
     segmentNames.forEach((name) => {

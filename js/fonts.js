@@ -25,7 +25,8 @@ export function makeFont(fontName, segmentMap, segments) {
 
   const stencil = new Stencil(segments);
   for (let label in segmentMap) {
-    glyphs.push(makeGlyph(label, stencil.getPath(segmentMap[label].split(''))));
+    const path = stencil.getFontPath(segmentMap[label].split(''));
+    glyphs.push(makeGlyph(label, path));
   }
 
   const font = new opentype.Font({
