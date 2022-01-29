@@ -63,6 +63,7 @@ function onEnd() {
   const cx = round(this.attr('cx'));
   const cy = round(this.attr('cy'));
   this.attr({cx, cy});
+  this.onChange();
 }
 
 function round(x) {
