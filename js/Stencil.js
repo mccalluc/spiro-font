@@ -4,9 +4,9 @@ function x10(points) {
   // TODO: If the polygons are too small, this will error.
   const scaledUp = points.map((point) => [point[0], 180 - (point[1])]);
   // Shrink the segments away from each other...
-  const eroded = bufferPolygon(scaledUp, -3, 1);
+  const eroded = bufferPolygon(scaledUp, -8, 1);
   // and then expand with rounded corners...
-  return bufferPolygon(eroded, 3.5, 2)
+  return bufferPolygon(eroded, 11, 0)
 }
 
 export default class Stencil {
