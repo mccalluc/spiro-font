@@ -11,7 +11,7 @@ function makeGlyph(character, path) {
   });
 }
 
-export function makeFont(fontName) {
+export function makeFont(fontName, segmentMap) {
   const glyphs = [];
 
   // The .notdef glyph is required.
@@ -24,25 +24,6 @@ export function makeFont(fontName) {
   glyphs.push(notdefGlyph);
 
   const stencil = new Stencil();
-  const segmentMap = {
-    '0': 'ABCDEF',
-    '1': 'BC',
-    '2': 'ABGED',
-    '3': 'ABCDG',
-    '4': 'BCFG',
-    '5': 'ACDFG',
-    '6': 'ACDEFG',
-    '7': 'ABC',
-    '8': 'ABCDEFG',
-    '9': 'ABCDFG',
-    'G': 'ACDEF',
-    'E': 'ADEFG',
-    'T': 'ABC',
-    'F': 'AEFG',
-    'O': 'ABCDEF',
-    'N': 'ABCEF',
-    ' ': ''   
-  }
   for (let label in segmentMap) {
     glyphs.push(makeGlyph(label, stencil.getPath(segmentMap[label].split(''))));
   }

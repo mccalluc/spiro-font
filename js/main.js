@@ -10,8 +10,27 @@ export default function main({targetClass, canvasId}) {
     }
   })
 
-  const fontName = 'Demo';
-  const font = makeFont(fontName);
+  const segmentMap = {
+    '0': 'ABCDEF',
+    '1': 'BC',
+    '2': 'ABGED',
+    '3': 'ABCDG',
+    '4': 'BCFG',
+    '5': 'ACDFG',
+    '6': 'ACDEFG',
+    '7': 'ABC',
+    '8': 'ABCDEFG',
+    '9': 'ABCDFG',
+    'G': 'ACDEF',
+    'E': 'ADEFG',
+    'T': 'ABC',
+    'F': 'AEFG',
+    'O': 'ABCDEF',
+    'N': 'ABCEF',
+    ' ': ''   
+  }
+  const fontName = 'spiro-font';
+  const font = makeFont(fontName, segmentMap);
   const styleSheet = document.createElement('style');
   styleSheet.innerText = `
     ${makeCssFontFace(fontName, font)}
