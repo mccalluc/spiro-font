@@ -1,12 +1,10 @@
 import Stencil from './Stencil.js';
 
-const width = 100;
-
 function makeGlyph(character, path) {
   return new opentype.Glyph({
     name: character,
     unicode: character.codePointAt(),
-    advanceWidth: width,
+    advanceWidth: 130,
     path: path
   });
 }
@@ -18,7 +16,7 @@ export function makeFont(fontName, segmentMap, segments) {
   const notdefGlyph = new opentype.Glyph({
     name: '.notdef',
     unicode: 0,
-    advanceWidth: width,
+    advanceWidth: 0,
     path: new opentype.Path()
   });
   glyphs.push(notdefGlyph);
@@ -32,7 +30,7 @@ export function makeFont(fontName, segmentMap, segments) {
   const font = new opentype.Font({
     familyName: fontName,
     styleName: 'Medium',
-    unitsPerEm: width, // Must be between 16 and 16384.
+    unitsPerEm: 100, // Must be between 16 and 16384.
     ascender: 200, // Must not be less than the max used by the paths.
     descender: -20,
     glyphs: glyphs
