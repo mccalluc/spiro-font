@@ -2,7 +2,7 @@ import { bufferPolygon } from "./geometry.js";
 
 function x10(points) {
   // TODO: If the polygons are too small, this will error.
-  const scaledUp = points.map((point) => [point[0] * 10, 100 - (point[1] * 10)]);
+  const scaledUp = points.map((point) => [point[0], 100 - (point[1])]);
   // Shrink the segments away from each other...
   const eroded = bufferPolygon(scaledUp, -3, 1);
   // and then expand with rounded corners...
