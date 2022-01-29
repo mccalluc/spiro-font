@@ -4,7 +4,7 @@ export default class Canvas {
   constructor({segments, domId}) {
     this.raphael = Raphael(document.getElementById(domId), 0, 0, 200, 200);
     for (let label in segments) {
-      const vertices = segments[label];
+      const vertices = segments[label].map(([x, y]) => [x * 10, y * 10]);
       this.drawSegment(label, vertices)
     }
   }
