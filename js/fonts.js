@@ -33,8 +33,8 @@ export function makeFont(fontName, segmentMap, segments) {
     familyName: fontName,
     styleName: 'Medium',
     unitsPerEm: width, // Must be between 16 and 16384.
-    ascender: 180, // Must not be less than the max used by the paths.
-    descender: 0,
+    ascender: 200, // Must not be less than the max used by the paths.
+    descender: -20,
     glyphs: glyphs
   });
   return font;
