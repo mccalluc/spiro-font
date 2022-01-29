@@ -24,16 +24,16 @@ export function makeFont(fontName) {
   glyphs.push(notdefGlyph);
 
   const stencil = new Stencil();
-  glyphs.push(makeGlyph('0', stencil.getPath('A', 'C', 'D', 'E', 'F', 'G')));
-  glyphs.push(makeGlyph('1', stencil.getPath('F', 'G')));
-  glyphs.push(makeGlyph('2', stencil.getPath('A', 'B', 'C', 'E', 'F')));
-  glyphs.push(makeGlyph('3', stencil.getPath('A', 'B', 'C', 'F', 'G')));
-  glyphs.push(makeGlyph('4', stencil.getPath('B', 'D', 'F', 'G')));
-  glyphs.push(makeGlyph('5', stencil.getPath('A', 'B', 'C', 'D', 'G')));
-  glyphs.push(makeGlyph('6', stencil.getPath('A', 'B', 'C', 'D', 'E', 'G')));
-  glyphs.push(makeGlyph('7', stencil.getPath('A', 'F', 'G')));
-  glyphs.push(makeGlyph('8', stencil.getPath('A', 'B', 'C', 'D', 'E', 'F', 'G')));
-  glyphs.push(makeGlyph('9', stencil.getPath('A', 'B', 'C', 'D', 'F', 'G')));
+  glyphs.push(makeGlyph('0', stencil.getPath('ABCDEF'.split(''))));
+  glyphs.push(makeGlyph('1', stencil.getPath('BC'.split(''))));
+  glyphs.push(makeGlyph('2', stencil.getPath('ABGED'.split(''))));
+  glyphs.push(makeGlyph('3', stencil.getPath('ABCDG'.split(''))));
+  glyphs.push(makeGlyph('4', stencil.getPath('BCFG'.split(''))));
+  glyphs.push(makeGlyph('5', stencil.getPath('ACDFG'.split(''))));
+  glyphs.push(makeGlyph('6', stencil.getPath('ACDEFG'.split(''))));
+  glyphs.push(makeGlyph('7', stencil.getPath('ABC'.split(''))));
+  glyphs.push(makeGlyph('8', stencil.getPath('ABCDEFG'.split(''))));
+  glyphs.push(makeGlyph('9', stencil.getPath('ABCDFG'.split(''))));
 
   const font = new opentype.Font({
     familyName: fontName,
