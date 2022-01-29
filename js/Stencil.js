@@ -1,4 +1,4 @@
-import { bufferPolygon } from "./geoUtils.js";
+import { bufferPolygon } from "./geometry.js";
 
 function x10(points) {
   const scaledUp = points.map((point) => [point[0] * 10, point[1] * 10]);
