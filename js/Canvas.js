@@ -10,6 +10,16 @@ export default class Canvas {
     }
   }
 
+  getSegments() {
+    const segments = {};
+    this.raphael.forEach((element) => {
+      const label = element.getData()?.label
+      if (!label) return;
+      segments[label] = element.attrs.path.slice(0, -1).map((step) => step.slice(1));
+    });
+    return segments
+  }
+
   drawSegment(label, vertices){
     const first = vertices[0];
     const rest = vertices.slice(1);
@@ -19,12 +29,13 @@ export default class Canvas {
       ['Z']
     ];
 
-    const polygon = this.raphael.path(path).attr('fill','#444');
+    const polygon = this.raphael.path(path).attr('fill','#444').data('label', label);
 
     const centroid = findCentroid(vertices);
     const text = this.raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
 
     const onChange = this.onChange;
+    const getSegments = this.getSegments.bind(this);
 
     this.raphael.setStart();
     for (let i = 0; i < vertices.length; i++) {
@@ -45,7 +56,7 @@ export default class Canvas {
           text.attr({x: centroid[0], y: centroid[1]})
           polygon.attr({path});
 
-          onChange();
+          onChange(getSegments());
         }
       }
     }
