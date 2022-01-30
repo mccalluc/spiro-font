@@ -34,9 +34,12 @@ export default function main({targetClass, targetDivId, targetStyleId}) {
   new Canvas({
     targetDivId,
     segments,
-    onChange: (segments) => {console.log(segments)}
+    onChange: (segments) => {setFont({segmentMap, segments, targetStyleId, targetClass})}
   })
+  setFont({segmentMap, segments, targetStyleId, targetClass})
+}
 
+function setFont({segmentMap, segments, targetStyleId, targetClass}) {
   const fontName = 'spiro-font';
   const font = makeFont(fontName, segmentMap, segments);
   const styleSheet = document.getElementById(targetStyleId);
