@@ -3,7 +3,7 @@ import { findCentroid } from "./geometry.js";
 export default class Canvas {
   constructor({segments, targetDivId, onChange}) {
     this.onChange = onChange;
-    this.raphael = Raphael(document.getElementById(targetDivId), 0, 0, 200, 200);
+    this.raphael = Raphael(document.getElementById(targetDivId), 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
       this.drawSegment(label, vertices)
