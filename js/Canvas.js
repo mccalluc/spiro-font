@@ -1,7 +1,8 @@
 import { findCentroid } from "./geometry.js";
 
 export default class Canvas {
-  constructor({segments, targetDivId}) {
+  constructor({segments, targetDivId, onChange}) {
+    this.onChange = onChange;
     this.raphael = Raphael(document.getElementById(targetDivId), 0, 0, 200, 200);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
@@ -23,25 +24,33 @@ export default class Canvas {
     const centroid = findCentroid(vertices);
     const text = this.raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
 
-    this.raphael.setStart();
+    const onChange = this.onChange;
 
+    this.raphael.setStart();
     for (let i = 0; i < vertices.length; i++) {
       this.raphael.circle(...vertices[i], 3).update = function(dx,dy) {
         const cx = this.attr('cx') + dx;
         const cy = this.attr('cy') + dy;
         this.attr({cx, cy});
         
-        path[i][1] = round(cx);
-        path[i][2] = round(cy);
-        const vFromPath = path.slice(0,-1).map(triple => [triple[1], triple[2]])
-        const centroid = findCentroid(vFromPath);
-        text.attr({x: centroid[0], y: centroid[1]})
-        
-        polygon.attr({path});
+        const oldX = path[i][1];
+        const oldY = path[i][2];
+        const newX = round(cx);
+        const newY = round(cy);
+        if (oldX !== newX || oldY !== newY) {
+          path[i][1] = newX;
+          path[i][2] = newY;
+          const vFromPath = path.slice(0,-1).map(triple => [triple[1], triple[2]])
+          const centroid = findCentroid(vFromPath);
+          text.attr({x: centroid[0], y: centroid[1]})
+          polygon.attr({path});
+
+          onChange();
+        }
       }
     }
-
     const controls = this.raphael.setFinish();
+
     controls.attr({fill: '#000', stroke: '#fff'});  
     controls.drag(onMove, onStart, onEnd);
   }

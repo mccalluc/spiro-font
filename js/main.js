@@ -33,7 +33,8 @@ export default function main({targetClass, targetDivId, targetStyleId}) {
   }
   new Canvas({
     targetDivId,
-    segments
+    segments,
+    onChange: () => {console.log('change!!!')}
   })
 
   const fontName = 'spiro-font';
