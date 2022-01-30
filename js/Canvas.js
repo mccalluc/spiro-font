@@ -1,8 +1,8 @@
 import { findCentroid } from "./geometry.js";
 
 export default class Canvas {
-  constructor({segments, domId}) {
-    this.raphael = Raphael(document.getElementById(domId), 0, 0, 200, 200);
+  constructor({segments, targetDivId}) {
+    this.raphael = Raphael(document.getElementById(targetDivId), 0, 0, 200, 200);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
       this.drawSegment(label, vertices)

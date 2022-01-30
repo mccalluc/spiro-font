@@ -1,6 +1,6 @@
 import { bufferPolygon } from "./geometry.js";
 
-function x10(points) {
+function scale(points) {
   // TODO: If the polygons are too small, this will error.
   const scaledUp = points.map((point) => [point[0], 180 - (point[1])]);
   // Shrink the segments away from each other...
@@ -18,7 +18,7 @@ export default class Stencil {
     const path = new opentype.Path();
     const segments = self.segments;
     segmentNames.forEach((name) => {
-      const segment = x10(segments[name]);
+      const segment = scale(segments[name]);
       path.moveTo(...segment[0]);
       segment.slice(1).forEach((point) => {
         path.lineTo(...point);

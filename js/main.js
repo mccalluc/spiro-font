@@ -2,7 +2,7 @@
 import { makeCssFontFace, makeFont } from './fonts.js';
 import Canvas from './Canvas.js';
 
-export default function main({targetClass, canvasId}) {
+export default function main({targetClass, targetDivId, targetStyleId}) {
   const segmentMap = {
     '0': 'ABCDEF',
     '1': 'BC',
@@ -32,16 +32,15 @@ export default function main({targetClass, canvasId}) {
     G: [[20, 80], [80, 80], [80, 100], [20, 100]],
   }
   new Canvas({
-    domId: canvasId,
+    targetDivId,
     segments
   })
 
   const fontName = 'spiro-font';
   const font = makeFont(fontName, segmentMap, segments);
-  const styleSheet = document.createElement('style');
+  const styleSheet = document.getElementById(targetStyleId);
   styleSheet.innerText = `
     ${makeCssFontFace(fontName, font)}
     .${targetClass} { font-family: '${fontName}' }
   `;
-  document.head.appendChild(styleSheet);
 }

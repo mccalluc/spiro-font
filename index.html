@@ -6,8 +6,10 @@
     <style>
       .style-me {
         font-size: 2.5em;
-        /* JS will inject another style element to add a font. */
       }
+    </style>
+    <style id="font-style">
+      /* JS will fill this in. */
     </style>
   </head>
   <body>
@@ -22,7 +24,7 @@
     
     <script type="module">
       import main from './js/main.js';
-      main({targetClass: 'style-me', canvasId: 'canvas'});
+      main({targetClass: 'style-me', targetDivId: 'canvas', targetStyleId: 'font-style'});
     </script>
   </body>
 </html>
