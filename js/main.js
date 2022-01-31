@@ -1,8 +1,8 @@
 
 import { makeCssFontFace, makeFont } from './fonts.js';
-import Canvas from './Canvas.js';
+import FontControls from './FontControls.js';
 
-export default function main({fontName, canvasContainerId, downloadButton}) {
+export default function main({fontName, controlsContainerId, downloadButton}) {
   const targetStyleId = 'spiro-font-style';
   const styleElement = document.createElement('style');
   styleElement.setAttribute('id', targetStyleId);
@@ -35,8 +35,8 @@ export default function main({fontName, canvasContainerId, downloadButton}) {
     F: [[0, 20], [20, 20], [20, 80], [0, 80]],
     G: [[20, 80], [80, 80], [80, 100], [20, 100]],
   }
-  new Canvas({
-    canvasContainerId,
+  new FontControls({
+    controlsContainerId,
     segmentMap,
     segments,
     onChange: ({segmentMap, segments}) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}

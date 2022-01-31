@@ -1,12 +1,12 @@
 import { findCentroid } from "./geometry.js";
 
-export default class Canvas {
-  constructor({segmentMap, segments, canvasContainerId, onChange}) {
-    const canvasContainer = document.createElement('div');
+export default class FontControls {
+  constructor({segmentMap, segments, controlsContainerId, onChange}) {
     const textareaContainer = document.createElement('div');
-    const parent = document.getElementById(canvasContainerId);
-    parent.appendChild(canvasContainer);
+    const canvasContainer = document.createElement('div');
+    const parent = document.getElementById(controlsContainerId);
     parent.appendChild(textareaContainer);
+    parent.appendChild(canvasContainer);
     this.segmentMap = segmentMap;
     this.onChange = onChange;
 
@@ -94,12 +94,6 @@ function onMove(dx,dy) {
 function onStart() {
   this.dx = 0;
   this.dy = 0;
-}
-
-function onEnd() {
-  const cx = round(this.attr('cx'));
-  const cy = round(this.attr('cy'));
-  this.attr({cx, cy});
 }
 
 function round(x) {
