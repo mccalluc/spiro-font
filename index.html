@@ -14,7 +14,7 @@
     <p>Under construction!</p>
     <input value="0123456789" size="12" class="style-me">
     <button class="style-me" id="download">GET FONT</button>
-    <div id="canvas"></div>
+    <div id="controls"></div>
 
     <script src="https://unpkg.com/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <script src="https://unpkg.com/jsts@2.3.0/dist/jsts.min.js"></script>
@@ -24,7 +24,7 @@
       import main from './js/main.js';
       main({
         fontName: 'spiro-font',
-        controlsContainerId: 'canvas',
+        controlsContainer: document.getElementById('controls'),
         downloadButton: document.getElementById('download')
       });
     </script>

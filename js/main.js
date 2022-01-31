@@ -2,7 +2,7 @@
 import { makeCssFontFace, makeFont } from './fonts.js';
 import FontControls from './FontControls.js';
 
-export default function main({fontName, controlsContainerId, downloadButton}) {
+export default function main({fontName, controlsContainer, downloadButton}) {
   const targetStyleId = 'spiro-font-style';
   const styleElement = document.createElement('style');
   styleElement.setAttribute('id', targetStyleId);
@@ -36,7 +36,7 @@ export default function main({fontName, controlsContainerId, downloadButton}) {
     G: [[20, 80], [80, 80], [80, 100], [20, 100]],
   }
   new FontControls({
-    controlsContainerId,
+    controlsContainer,
     segmentMap,
     segments,
     onChange: ({segmentMap, segments}) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}

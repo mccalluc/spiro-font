@@ -1,12 +1,11 @@
 import { findCentroid } from "./geometry.js";
 
 export default class FontControls {
-  constructor({segmentMap, segments, controlsContainerId, onChange}) {
+  constructor({segmentMap, segments, controlsContainer, onChange}) {
     const textareaContainer = document.createElement('div');
-    const canvasContainer = document.createElement('div');
-    const parent = document.getElementById(controlsContainerId);
-    parent.appendChild(textareaContainer);
-    parent.appendChild(canvasContainer);
+    const svgContainer = document.createElement('div');
+    controlsContainer.appendChild(textareaContainer);
+    controlsContainer.appendChild(svgContainer);
     this.segmentMap = segmentMap;
     this.onChange = onChange;
 
@@ -14,7 +13,7 @@ export default class FontControls {
     textarea.value = 'ABCD';
     textareaContainer.appendChild(textarea);
 
-    this.raphael = Raphael(canvasContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
+    this.raphael = Raphael(svgContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
       this.drawSegment(label, vertices)
