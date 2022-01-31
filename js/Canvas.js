@@ -34,9 +34,6 @@ export default class Canvas {
     const centroid = findCentroid(vertices);
     const text = this.raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
 
-    const onChange = this.onChange;
-    const getSegments = this.getSegments.bind(this);
-
     this.raphael.setStart();
     for (let i = 0; i < vertices.length; i++) {
       this.raphael.circle(...vertices[i], 3).update = function(dx,dy) {
@@ -55,15 +52,24 @@ export default class Canvas {
           const centroid = findCentroid(vFromPath);
           text.attr({x: centroid[0], y: centroid[1]})
           polygon.attr({path});
-
-          onChange(getSegments());
+          // Orginally, onChange was called here... now in drag onEnd.
         }
       }
     }
     const controls = this.raphael.setFinish();
 
+    const onChange = this.onChange;
+    const getSegments = this.getSegments.bind(this);
+
     controls.attr({fill: '#000', stroke: '#fff'});  
-    controls.drag(onMove, onStart, onEnd);
+    controls.drag(onMove, onStart, function() {
+      // Originally, onChange was called during drag,
+      // but the style flash on Chrome is distracting.
+      const cx = round(this.attr('cx'));
+      const cy = round(this.attr('cy'));
+      this.attr({cx, cy});
+      onChange(getSegments());
+    });
   }
 }
 

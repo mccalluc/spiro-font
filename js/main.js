@@ -2,7 +2,7 @@
 import { makeCssFontFace, makeFont } from './fonts.js';
 import Canvas from './Canvas.js';
 
-export default function main({targetClass, targetDivId, targetStyleId, downloadButton}) {
+export default function main({fontName, targetDivId, targetStyleId, downloadButton}) {
   const segmentMap = {
     '0': 'ABCDEF',
     '1': 'BC',
@@ -34,18 +34,16 @@ export default function main({targetClass, targetDivId, targetStyleId, downloadB
   new Canvas({
     targetDivId,
     segments,
-    onChange: (segments) => {setFont({segmentMap, segments, targetStyleId, targetClass, downloadButton})}
+    onChange: (segments) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}
   })
-  setFont({segmentMap, segments, targetStyleId, targetClass, downloadButton})
+  setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})
 }
 
-function setFont({segmentMap, segments, targetStyleId, targetClass, downloadButton}) {
-  const fontName = 'spiro-font';
+function setFont({segmentMap, segments, targetStyleId, fontName, downloadButton}) {
   const font = makeFont(fontName, segmentMap, segments);
   downloadButton.onclick = () => { font.download(); }
   const styleSheet = document.getElementById(targetStyleId);
   styleSheet.innerText = `
     ${makeCssFontFace(fontName, font)}
-    .${targetClass} { font-family: '${fontName}' }
   `;
 }
