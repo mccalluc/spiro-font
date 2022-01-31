@@ -10,7 +10,8 @@ export default class FontControls {
     this.onChange = onChange;
 
     const textarea = document.createElement('textarea');
-    textarea.value = 'ABCD';
+    textarea.rows = 10;
+    textarea.value = segmentMapToText(segmentMap);
     textareaContainer.appendChild(textarea);
 
     this.raphael = Raphael(svgContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
@@ -82,6 +83,14 @@ export default class FontControls {
       onChange({segments: getSegments(), segmentMap: segmentMap});
     });
   }
+}
+
+function segmentMapToText(segmentMap) {
+  return Object.entries(segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
+}
+
+function textToSegmentMap(text) {
+  return Object.fromEntries(text.split('\n').map((line) => line.split(/\s+/)))
 }
 
 function onMove(dx,dy) {
