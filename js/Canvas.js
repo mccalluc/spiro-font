@@ -9,6 +9,11 @@ export default class Canvas {
     parent.appendChild(textareaContainer);
     this.segmentMap = segmentMap;
     this.onChange = onChange;
+
+    const textarea = document.createElement('textarea');
+    textarea.value = 'ABCD';
+    textareaContainer.appendChild(textarea);
+
     this.raphael = Raphael(canvasContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
