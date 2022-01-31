@@ -4,6 +4,7 @@ Create simple fonts in JS, just for fun.
 Thanks to 
 - [opentype.js](https://github.com/staff-code/opentype.js#readme): Font construction
 - [JSTS](https://github.com/bjornharrtell/jsts): Geometric manipulations
+- [Raphaël](https://dmitrybaranovskiy.github.io/raphael/): SVG drawing
 
 Deployed at: https://mccalluc.github.io/spiro-font/
 
