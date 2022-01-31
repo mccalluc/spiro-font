@@ -3,9 +3,7 @@ import { makeCssFontFace, makeFont } from './fonts.js';
 import FontControls from './FontControls.js';
 
 export default function main({fontName, controlsContainer, downloadButton}) {
-  const targetStyleId = 'spiro-font-style';
   const styleElement = document.createElement('style');
-  styleElement.setAttribute('id', targetStyleId);
   document.getElementsByTagName('head')[0].appendChild(styleElement);
   const segmentMap = {
     '0': 'ABCDEF',
@@ -39,16 +37,15 @@ export default function main({fontName, controlsContainer, downloadButton}) {
     controlsContainer,
     segmentMap,
     segments,
-    onChange: ({segmentMap, segments}) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}
+    onChange: ({segmentMap, segments}) => {setFont({segmentMap, segments, styleElement, fontName, downloadButton})}
   })
-  setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})
+  setFont({segmentMap, segments, styleElement, fontName, downloadButton})
 }
 
-function setFont({segmentMap, segments, targetStyleId, fontName, downloadButton}) {
+function setFont({segmentMap, segments, styleElement, fontName, downloadButton}) {
   const font = makeFont(fontName, segmentMap, segments);
   downloadButton.onclick = () => { font.download(); }
-  const styleSheet = document.getElementById(targetStyleId);
-  styleSheet.innerText = `
+  styleElement.innerText = `
     ${makeCssFontFace(fontName, font)}
   `;
 }
