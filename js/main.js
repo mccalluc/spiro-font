@@ -2,7 +2,11 @@
 import { makeCssFontFace, makeFont } from './fonts.js';
 import Canvas from './Canvas.js';
 
-export default function main({fontName, targetDivId, targetStyleId, downloadButton}) {
+export default function main({fontName, canvasContainerId, downloadButton}) {
+  const targetStyleId = 'spiro-font-style';
+  const styleElement = document.createElement('style');
+  styleElement.setAttribute('id', targetStyleId);
+  document.getElementsByTagName('head')[0].appendChild(styleElement);
   const segmentMap = {
     '0': 'ABCDEF',
     '1': 'BC',
@@ -32,7 +36,7 @@ export default function main({fontName, targetDivId, targetStyleId, downloadButt
     G: [[20, 80], [80, 80], [80, 100], [20, 100]],
   }
   new Canvas({
-    targetDivId,
+    canvasContainerId,
     segments,
     onChange: (segments) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}
   })
