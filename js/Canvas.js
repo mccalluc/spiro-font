@@ -1,7 +1,8 @@
 import { findCentroid } from "./geometry.js";
 
 export default class Canvas {
-  constructor({segments, canvasContainerId, onChange}) {
+  constructor({segmentMap, segments, canvasContainerId, onChange}) {
+    this.segmentMap = segmentMap;
     this.onChange = onChange;
     this.raphael = Raphael(document.getElementById(canvasContainerId), 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
@@ -59,6 +60,7 @@ export default class Canvas {
     const controls = this.raphael.setFinish();
 
     const onChange = this.onChange;
+    const segmentMap = this.segmentMap;
     const getSegments = this.getSegments.bind(this);
 
     controls.attr({fill: '#000', stroke: '#fff'});  
@@ -68,7 +70,7 @@ export default class Canvas {
       const cx = round(this.attr('cx'));
       const cy = round(this.attr('cy'));
       this.attr({cx, cy});
-      onChange(getSegments());
+      onChange({segments: getSegments(), segmentMap: segmentMap});
     });
   }
 }

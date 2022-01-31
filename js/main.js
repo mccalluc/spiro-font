@@ -37,8 +37,9 @@ export default function main({fontName, canvasContainerId, downloadButton}) {
   }
   new Canvas({
     canvasContainerId,
+    segmentMap,
     segments,
-    onChange: (segments) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}
+    onChange: ({segmentMap, segments}) => {setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})}
   })
   setFont({segmentMap, segments, targetStyleId, fontName, downloadButton})
 }
