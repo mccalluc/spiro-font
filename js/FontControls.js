@@ -9,19 +9,31 @@ export default class FontControls {
     this.segmentMap = segmentMap;
     this.onChange = onChange;
 
-    const textarea = document.createElement('textarea');
-    textarea.rows = 10;
-    textarea.onchange = function() {
-      onChange({segments, segmentMap: textToSegmentMap(this.value)})
+    this.textarea = document.createElement('textarea');
+    this.textarea.rows = 10;
+    this.textarea.value = segmentMapToText(segmentMap);
+    const getSegmentMap = this.getSegmentMap.bind(this);
+    const getSegments = this.getSegments.bind(this);
+    this.textarea.onchange = function() {
+      onChange({segments: getSegments(), segmentMap: getSegmentMap()})
     }
-    textarea.value = segmentMapToText(segmentMap);
-    textareaContainer.appendChild(textarea);
+    textareaContainer.appendChild(this.textarea);
 
     this.raphael = Raphael(svgContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
       this.drawSegment(label, vertices)
     }
+  }
+
+  getSegmentMap() {
+    const text = this.textarea.value;
+    const segmentMap = Object.fromEntries(
+      text.split('\n')
+      .map((line) => line.split(/\s+/))
+      .filter(([key, value]) => Boolean(key))
+    );
+    return {' ': '', ...segmentMap}
   }
 
   getSegments() {
@@ -73,8 +85,8 @@ export default class FontControls {
     const controls = this.raphael.setFinish();
 
     const onChange = this.onChange;
-    const segmentMap = this.segmentMap;
     const getSegments = this.getSegments.bind(this);
+    const getSegmentMap = this.getSegmentMap.bind(this);
 
     controls.attr({fill: '#000', stroke: '#fff'});  
     controls.drag(onMove, onStart, function() {
@@ -83,7 +95,7 @@ export default class FontControls {
       const cx = round(this.attr('cx'));
       const cy = round(this.attr('cy'));
       this.attr({cx, cy});
-      onChange({segments: getSegments(), segmentMap: segmentMap});
+      onChange({segments: getSegments(), segmentMap: getSegmentMap()});
     });
   }
 }
