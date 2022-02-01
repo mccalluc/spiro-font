@@ -6,7 +6,6 @@ export default class FontControls {
     const svgContainer = document.createElement('div');
     controlsContainer.appendChild(textareaContainer);
     controlsContainer.appendChild(svgContainer);
-    this.segmentMap = segmentMap;
     this.onChange = onChange;
 
     this.textarea = document.createElement('textarea');
