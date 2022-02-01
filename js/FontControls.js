@@ -11,6 +11,9 @@ export default class FontControls {
 
     const textarea = document.createElement('textarea');
     textarea.rows = 10;
+    textarea.onchange = function() {
+      onChange({segments, segmentMap: textToSegmentMap(this.value)})
+    }
     textarea.value = segmentMapToText(segmentMap);
     textareaContainer.appendChild(textarea);
 
@@ -90,7 +93,12 @@ function segmentMapToText(segmentMap) {
 }
 
 function textToSegmentMap(text) {
-  return Object.fromEntries(text.split('\n').map((line) => line.split(/\s+/)))
+  const segmentMap = Object.fromEntries(
+    text.split('\n')
+    .map((line) => line.split(/\s+/))
+    .filter(([key, value]) => Boolean(key))
+  );
+  return {' ': '', ...segmentMap}
 }
 
 function onMove(dx,dy) {
