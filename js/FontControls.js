@@ -1,13 +1,38 @@
 import { findCentroid } from "./geometry.js";
 
-export default class Canvas {
-  constructor({segments, targetDivId, onChange}) {
+export default class FontControls {
+  constructor({segmentMap, segments, controlsContainer, onChange}) {
+    const textareaContainer = document.createElement('div');
+    const svgContainer = document.createElement('div');
+    controlsContainer.appendChild(textareaContainer);
+    controlsContainer.appendChild(svgContainer);
     this.onChange = onChange;
-    this.raphael = Raphael(document.getElementById(targetDivId), 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
+
+    this.textarea = document.createElement('textarea');
+    this.textarea.rows = 10;
+    this.textarea.value = segmentMapToText(segmentMap);
+    const getSegmentMap = this.getSegmentMap.bind(this);
+    const getSegments = this.getSegments.bind(this);
+    this.textarea.onchange = function() {
+      onChange({segments: getSegments(), segmentMap: getSegmentMap()})
+    }
+    textareaContainer.appendChild(this.textarea);
+
+    this.raphael = Raphael(svgContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
     for (let label in segments) {
       const vertices = segments[label].map(([x, y]) => [x, y]);
       this.drawSegment(label, vertices)
     }
+  }
+
+  getSegmentMap() {
+    const text = this.textarea.value;
+    const segmentMap = Object.fromEntries(
+      text.split('\n')
+      .map((line) => line.split(/\s+/))
+      .filter(([key, value]) => Boolean(key))
+    );
+    return {' ': '', ...segmentMap}
   }
 
   getSegments() {
@@ -60,6 +85,7 @@ export default class Canvas {
 
     const onChange = this.onChange;
     const getSegments = this.getSegments.bind(this);
+    const getSegmentMap = this.getSegmentMap.bind(this);
 
     controls.attr({fill: '#000', stroke: '#fff'});  
     controls.drag(onMove, onStart, function() {
@@ -68,9 +94,22 @@ export default class Canvas {
       const cx = round(this.attr('cx'));
       const cy = round(this.attr('cy'));
       this.attr({cx, cy});
-      onChange(getSegments());
+      onChange({segments: getSegments(), segmentMap: getSegmentMap()});
     });
   }
+}
+
+function segmentMapToText(segmentMap) {
+  return Object.entries(segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
+}
+
+function textToSegmentMap(text) {
+  const segmentMap = Object.fromEntries(
+    text.split('\n')
+    .map((line) => line.split(/\s+/))
+    .filter(([key, value]) => Boolean(key))
+  );
+  return {' ': '', ...segmentMap}
 }
 
 function onMove(dx,dy) {
@@ -82,12 +121,6 @@ function onMove(dx,dy) {
 function onStart() {
   this.dx = 0;
   this.dy = 0;
-}
-
-function onEnd() {
-  const cx = round(this.attr('cx'));
-  const cy = round(this.attr('cy'));
-  this.attr({cx, cy});
 }
 
 function round(x) {
