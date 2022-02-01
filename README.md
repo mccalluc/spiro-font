@@ -1,5 +1,6 @@
-# spiro-font
-Create simple fonts in JS, just for fun.
+<img width="183" alt="SPIRO-FONT" src="https://user-images.githubusercontent.com/730388/151907055-96ea0a27-9fa9-444d-a6f2-22210025a72b.png">
+
+Like a spirograph, for fonts: Change the parameters, make something interesting, and waste time.
 
 Thanks to 
 - [opentype.js](https://github.com/staff-code/opentype.js#readme): Font construction
