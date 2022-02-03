@@ -1,0 +1,43 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ploverlay | {{ page.title }}</title>
+    <style>
+      html, body, svg {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/perspective-transform@1.1.3/dist/perspective-transform.min.js"></script>
+    <script type="module">
+      import main from '{{ site.baseurl }}/assets/js/main.js';
+      window.onload = main;
+    </script>
+  </head>
+  <body>
+    <div id="message">Please wait...</div>
+    <svg id="map" height="100%" width="100%" viewBox="{{ page.view_box }}"
+      data-geo0="{{ page.geo_coords[0] }}"
+      data-geo1="{{ page.geo_coords[1] }}"
+      data-geo2="{{ page.geo_coords[2] }}"
+      data-geo3="{{ page.geo_coords[3] }}"
+      data-img0="{{ page.img_coords[0] }}"
+      data-img1="{{ page.img_coords[1] }}"
+      data-img2="{{ page.img_coords[2] }}"
+      data-img3="{{ page.img_coords[3] }}"
+    >
+      <image
+        href="{{ page.img_src }}"
+        height="100%" width="100%" />
+      <circle id="pin" cx="0" cy="0" r="1em" fill="#fff" stroke="#000" stroke-width="0.4em" />
+      <line id="north" x1="0" y1="0" x2="0" y2="0" stroke="pink" />
+      <line id="south" x1="0" y1="0" x2="0" y2="0" stroke="pink" />
+      <line id="east" x1="0" y1="0" x2="0" y2="0" stroke="pink" />
+      <line id="west" x1="0" y1="0" x2="0" y2="0" stroke="pink" />
+    </svg>
+  </body>
+</html>
