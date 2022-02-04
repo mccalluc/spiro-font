@@ -1,7 +1,7 @@
 import { bufferPolygon } from "./geometry.js";
 
 function scale(points) {
-  // TODO: If the polygons are too small, this will error.
+  // TODO: Make more robust against bad geometry.
   const scaledUp = points.map((point) => [point[0], 180 - (point[1])]);
   // Shrink the segments away from each other...
   const eroded = bufferPolygon(scaledUp, -8, 1);
@@ -18,12 +18,16 @@ export default class Stencil {
     const path = new opentype.Path();
     const segments = self.segments;
     segmentNames.forEach((name) => {
-      const segment = scale(segments[name]);
-      path.moveTo(...segment[0]);
-      segment.slice(1).forEach((point) => {
-        path.lineTo(...point);
-      })
-      path.lineTo(...segment[0]);
+      try {
+        const segment = scale(segments[name]);
+        path.moveTo(...segment[0]);
+        segment.slice(1).forEach((point) => {
+          path.lineTo(...point);
+        })
+        path.lineTo(...segment[0]);
+      } catch(e) {
+        console.log('Geometry problem', e);
+      }
     })
     return path;
   }

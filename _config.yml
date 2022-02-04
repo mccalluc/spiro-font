@@ -1,0 +1,22 @@
+title: spiro-font
+description: "Like a spirograph, for fonts: Change the parameters, make something interesting, and waste time."
+baseurl: "/spiro-font"
+url: "https://mccalluc.github.io"
+
+# Build settings
+theme: minima
+plugins: []
+collections:
+  fonts:
+    output: True
+    permalink: /:collection/:name  # Default includes ".html" extension in url.
+defaults:
+  - scope:
+      path: ''
+      type: fonts
+    values:
+      layout: fonts
+
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+exclude: []

@@ -1,0 +1,39 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>spiro-font | {{ page.title }}</title>
+    <style>
+      .style-me {
+        font-size: 2em;
+        font-family: 'spiro-font';
+      }
+    </style>
+  </head>
+  <body>
+    <p><a href="{{ site.baseurl }}/">home</a></p>
+    <h1>{{ page.name }}</h1>
+    {{ content }}
+    <textarea rows="2" columns="12" class="style-me">{{ page.sampleText }}</textarea>
+    <button class="style-me" id="download">GET FONT</button>
+    <div id="controls"></div>
+    
+    <script src="https://unpkg.com/opentype.js@1.3.4/dist/opentype.min.js"></script>
+    <script src="https://unpkg.com/jsts@2.3.0/dist/jsts.min.js"></script>
+    <script src="https://unpkg.com/raphael@2.3.0/raphael.min.js"></script>
+    
+    <script type="module">
+      import main from '{{ site.baseurl }}/assets/js/main.js';
+      const segmentMap = {{ page.segmentMap | jsonify }};
+      const segments = {{ page.segments | jsonify }};
+      main({
+        fontName: 'spiro-font',
+        segmentMap, segments,
+        controlsContainer: document.getElementById('controls'),
+        downloadButton: document.getElementById('download')
+      });
+    </script>
+  </body>
+</html>
