@@ -124,5 +124,5 @@ function onStart() {
 }
 
 function round(x) {
-  return Math.round(x/10) * 10
+  return Math.round(x/5) * 5
 }
