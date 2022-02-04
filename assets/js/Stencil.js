@@ -1,17 +1,20 @@
 import { bufferPolygon } from "./geometry.js";
 
-function scale(points) {
+function scale({points, shrink, grow, bevel}) {
   // TODO: Make more robust against bad geometry.
   const scaledUp = points.map((point) => [point[0], 180 - (point[1])]);
   // Shrink the segments away from each other...
-  const eroded = bufferPolygon(scaledUp, -8, 1);
+  const eroded = bufferPolygon(scaledUp, -shrink, 1);
   // and then expand with rounded corners...
-  return bufferPolygon(eroded, 11, 0)
+  return bufferPolygon(eroded, grow, bevel);
 }
 
 export default class Stencil {
-  constructor(segments) {
-    self.segments = segments
+  constructor({segments, shrink, grow, bevel}) {
+    self.segments = segments;
+    self.shrink = shrink;
+    self.grow = grow;
+    self.bevel = bevel;
   }
 
   getFontPath(segmentNames) {
@@ -19,7 +22,7 @@ export default class Stencil {
     const segments = self.segments;
     segmentNames.forEach((name) => {
       try {
-        const segment = scale(segments[name]);
+        const segment = scale({points: segments[name], shrink, grow, bevel});
         path.moveTo(...segment[0]);
         segment.slice(1).forEach((point) => {
           path.lineTo(...point);

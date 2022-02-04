@@ -21,7 +21,10 @@ export function makeFont(fontName, segmentMap, segments) {
   });
   glyphs.push(notdefGlyph);
 
-  const stencil = new Stencil(segments);
+  const shrink = 8;
+  const grow = 11;
+  const bevel = 0;
+  const stencil = new Stencil({segments, shrink, grow, bevel});
   for (let label in segmentMap) {
     const path = stencil.getFontPath(segmentMap[label].split(''));
     glyphs.push(makeGlyph(label, path));
