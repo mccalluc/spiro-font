@@ -28,9 +28,9 @@
       import main from '{{ site.baseurl }}/assets/js/main.js';
       const segmentMap = {{ page.segmentMap | jsonify }};
       const segments = {{ page.segments | jsonify }};
-      const shrink = 8;
-      const grow = 11;
-      const bevel = 0;
+      const shrink = {{ page.shrink }};
+      const grow = {{ page.grow }};
+      const bevel = {{ page.bevel }};
       main({
         fontName: 'spiro-font',
         segmentMap, segments, shrink, grow, bevel,
