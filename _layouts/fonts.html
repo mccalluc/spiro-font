@@ -28,9 +28,12 @@
       import main from '{{ site.baseurl }}/assets/js/main.js';
       const segmentMap = {{ page.segmentMap | jsonify }};
       const segments = {{ page.segments | jsonify }};
+      const shrink = 8;
+      const grow = 11;
+      const bevel = 0;
       main({
         fontName: 'spiro-font',
-        segmentMap, segments,
+        segmentMap, segments, shrink, grow, bevel,
         controlsContainer: document.getElementById('controls'),
         downloadButton: document.getElementById('download')
       });

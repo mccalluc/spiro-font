@@ -1,6 +1,9 @@
 ---
 name: Seven Segment
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'
+shrink: 8
+grow: 11
+bevel: 0
 segmentMap: {
   '0': 'ABCDEF',
   '1': 'BC',

@@ -9,7 +9,7 @@ function makeGlyph(character, path) {
   });
 }
 
-export function makeFont(fontName, segmentMap, segments) {
+export function makeFont({fontName, segmentMap, segments, shrink, grow, bevel}) {
   const glyphs = [];
 
   // The .notdef glyph is required.
@@ -21,9 +21,6 @@ export function makeFont(fontName, segmentMap, segments) {
   });
   glyphs.push(notdefGlyph);
 
-  const shrink = 8;
-  const grow = 11;
-  const bevel = 0;
   const stencil = new Stencil({segments, shrink, grow, bevel});
   for (let label in segmentMap) {
     const path = stencil.getFontPath(segmentMap[label].split(''));
