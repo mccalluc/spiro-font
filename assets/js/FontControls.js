@@ -13,7 +13,7 @@ export default class FontControls {
     this.textarea.value = segmentMapToText(segmentMap);
     const getSegmentMap = this.getSegmentMap.bind(this);
     const getSegments = this.getSegments.bind(this);
-    this.textarea.onchange = function() {
+    this.textarea.onkeyup = function() {
       onChange({segments: getSegments(), segmentMap: getSegmentMap()})
     }
     textareaContainer.appendChild(this.textarea);
