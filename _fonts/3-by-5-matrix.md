@@ -1,6 +1,6 @@
 ---
 name: 3x5 Matrix
-sampleText: '0123456789 THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'
+sampleText: '0123456789 THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG !%^*()_-+={}[]|\;"<>,.?/:'
 shrink: 12
 grow: 10
 bevel: 2
@@ -15,6 +15,33 @@ segmentMap: {
   '7': 'ABCFHKN',
   '8': 'ABCDFGHIJLMNO',
   '9': 'ABCDFGHILMN',
+
+  '!': 'BEHN',
+  '%': 'AFHJO',
+  '^': 'BDF',
+  '*': 'DFHJL',
+  '(': 'CEHKO',
+  ')': 'AEHKM',
+  '_': 'MNO',
+  '-': 'GHI',
+  '+': 'EGHIK',
+  '=': 'DEFJKL',
+  '{': 'CEGHKO',
+  '}': 'AEHIKM',
+  '[': 'BCEHKNO',
+  ']': 'ABEHKMN',
+  '|': 'BEHKN',
+  '\': 'DHL',
+  ';': 'EKM',
+  ':': 'EK',
+  '"': 'ACDF',
+  "'": 'BE',
+  '<': 'EGK',
+  '>': 'EIK',
+  ',': 'KM',
+  '.': 'N',
+  '?': 'ABFHN',
+  '/': 'FHJ',
 
   'A': 'BDFGHIJLMO',
   'B': 'ABDFGHJLMN',
