@@ -15,7 +15,10 @@ export default function main({segmentMap, segments, shrink, grow, bevel, fontNam
 }
 
 function setFont({segmentMap, segments, shrink, grow, bevel, styleElement, fontName, downloadButton}) {
-  console.log('Font paramters:', {segmentMap, segments});
+  console.groupCollapsed('Font paramters')
+  console.log(`segmentMap: ${JSON.stringify(segmentMap, null, 2)}`);
+  console.log(`segments: ${JSON.stringify(segments).replaceAll(',"', ',\n  "')}`);
+  console.groupEnd();
   const font = makeFont({fontName, segmentMap, segments, shrink, grow, bevel});
   downloadButton.onclick = () => { font.download(); }
   styleElement.innerText = `

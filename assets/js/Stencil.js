@@ -29,7 +29,7 @@ export default class Stencil {
         })
         path.lineTo(...segment[0]);
       } catch(e) {
-        console.log('Geometry problem', e);
+        console.warn('Geometry problem', e);
       }
     })
     return path;
