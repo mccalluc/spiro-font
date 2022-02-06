@@ -6,9 +6,10 @@ for y in range(5):
     char = chr(i)
     gx = grid * x
     gy = grid * y
-    square = [[gx, gy], [gx + grid, gy],
-              [gx + grid, gy + grid], [gx, gy + grid]]
-    segments[char] = square
+    up = [[gx, gy], [gx + grid, gy], [gx, gy + grid]]
+    down = [[gx + grid, gy], [gx + grid, gy + grid], [gx, gy + grid]]
+    segments[char] = up
+    segments[char.lower()] = down
     i += 1
 
 from pprint import pprint
