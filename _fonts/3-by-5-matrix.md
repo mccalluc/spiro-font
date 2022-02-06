@@ -1,5 +1,5 @@
 ---
-name: 3x5 Matrix
+name: 3×5 Matrix
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG !%^*()_-+={}[]|\;"<>,.?/:'
 shrink: 12
 grow: 10
