@@ -1,0 +1,27 @@
+name: spiro-font CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    # Available versions:
+    # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node 12.16.3
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.16.3'
+   
+    - name: Install node dependencies
+      run: npm ci --prefix tests
+
+    - name: Run test script
+      run: ./test.sh
+      env:
+        GH_ACTIONS_BRANCH: ${{ github.ref }}
+        GH_ACTIONS: true
