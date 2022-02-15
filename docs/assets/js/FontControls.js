@@ -1,4 +1,4 @@
-import { findCentroid } from "./geometry.js";
+import { findCentroid } from "./geometry.mjs";
 
 export default class FontControls {
   constructor({segmentMap, segments, controlsContainer, onChange}) {

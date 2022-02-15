@@ -1,6 +1,5 @@
-const reader = new jsts.io.GeoJSONReader();
-
 export function bufferPolygon(polygon, bufferDistance, cornerCount) {
+  const reader = new jsts.io.GeoJSONReader();
   // GeoJSON Polygon is actually a list of polygons,
   // with the latter polygons being holes in the first
   const geoJson = { type: 'Polygon', coordinates: [[...polygon, polygon[0]]] };

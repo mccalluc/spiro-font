@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Tests for spiro-font",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "author": "",
   "license": "ISC",

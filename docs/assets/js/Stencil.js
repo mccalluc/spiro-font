@@ -1,4 +1,4 @@
-import { bufferPolygon } from "./geometry.js";
+import { bufferPolygon } from "./geometry.mjs";
 
 function scale({points, shrink, grow, bevel}) {
   // TODO: Make more robust against bad geometry.
