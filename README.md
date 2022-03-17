@@ -9,7 +9,8 @@ Thanks to
 
 Deployed at: https://mccalluc.github.io/spiro-font/
 
-When developing locally, you'll need to run a local server because of CORS restrictions. One option:
+Use jekyll when developing locally:
 ```
-python3 -m http.server 8000
+bundler exec jekyll serve
 ```
+(Because of CORS restrictions, the javascript won't work with just `file:` instead of `http:`.)
