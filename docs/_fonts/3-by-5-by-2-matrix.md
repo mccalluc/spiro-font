@@ -1,8 +1,8 @@
 ---
 name: 3×5×2 Matrix
 sampleText: >
-  0123456789 The quick brown fox jumped over the lazy dog. 
-  THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG. !@#$$%^*()_-+={}[]|\;"<>,.?/:'
+  0123456789 The quick brown fox jumps over the lazy dog. 
+  THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG. !@#$$%^*()_-+={}[]|\;"<>,.?/:'
 shrink: 1.25
 grow: 0
 bevel: 0
