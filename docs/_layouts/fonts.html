@@ -14,8 +14,6 @@
   </head>
   <body>
     <script src="https://unpkg.com/vue@3"></script>
-    <script>
-    </script>
     
     <div id="app">
       <main-component/>
@@ -32,6 +30,9 @@
         {
           baseUrl: '{{ site.baseurl }}/',
           page: {{ page | jsonify }},
+          // page has more information than the component needs,
+          // but for now picking out just the fields of interest
+          // is not worth the hassle.
         }  
       ).mount('#app')
     </script>
