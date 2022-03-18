@@ -14,22 +14,28 @@
   </head>
   <body>
     <script src="https://unpkg.com/vue@3"></script>
+    <script>
+    </script>
     
-    <div id="app"><main-component></main-component></div>
+    <div id="app">
+      <main-component/>
+    </div>
     
     <script type="module">
       import MainComponent from '{{ site.baseurl }}/assets/js/MainComponent.js'
-      Vue.createApp({
-        components: {
-          MainComponent
-        }
-      }).mount('#app')
+      Vue.createApp(
+        {
+          components: {
+            MainComponent
+          }
+        },
+        {
+          baseUrl: '{{ site.baseurl }}/',
+          page: {{ page | jsonify }},
+        }  
+      ).mount('#app')
     </script>
 
-    <p><a href="{{ site.baseurl }}/">home</a></p>
-    <h1>{{ page.name }}</h1>
-    {{ content }}
-    <textarea rows="2" columns="12" class="style-me">{{ page.sampleText }}</textarea>
     <button class="style-me" id="download">GET FONT</button>
     <div id="controls"></div>
     
