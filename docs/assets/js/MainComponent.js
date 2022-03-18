@@ -1,3 +1,5 @@
+import { findCentroid } from "./geometry.js";
+
 function drawSegment(raphael, label, vertices) {
   const first = vertices[0];
   const rest = vertices.slice(1);
@@ -9,8 +11,8 @@ function drawSegment(raphael, label, vertices) {
 
   const polygon = raphael.path(path).attr('fill','#444').data('label', label);
 
-  // const centroid = findCentroid(vertices);
-  // const text = raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
+  const centroid = findCentroid(vertices);
+  const text = raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
 
   raphael.setStart();
   for (let i = 0; i < vertices.length; i++) {
@@ -30,52 +32,63 @@ function drawSegment(raphael, label, vertices) {
         const centroid = findCentroid(vFromPath);
         text.attr({x: centroid[0], y: centroid[1]})
         polygon.attr({path});
-        // Orginally, onChange was called here... now in drag onEnd.
       }
     }
   }
 
-  // const controls = this.raphael.setFinish();
+  const controls = raphael.setFinish();
+  controls.attr({fill: '#000', stroke: '#fff'});  
+  controls.drag(onMove, onStart, function() {
+    const cx = round(this.attr('cx'));
+    const cy = round(this.attr('cy'));
+    this.attr({cx, cy});
+    console.log('TODO: emit segment update event');
+  });
+}
 
-  // const onChange = this.onChange;
-  // const getSegments = this.getSegments.bind(this);
-  // const getSegmentMap = this.getSegmentMap.bind(this);
+function onMove(dx,dy) {
+  this.update(dx - this.dx, dy - this.dy);
+  this.dx = dx;
+  this.dy = dy;
+}
 
-  // controls.attr({fill: '#000', stroke: '#fff'});  
-  // controls.drag(onMove, onStart, function() {
-  //   // Originally, onChange was called during drag,
-  //   // but the style flash on Chrome is distracting.
-  //   const cx = round(this.attr('cx'));
-  //   const cy = round(this.attr('cy'));
-  //   this.attr({cx, cy});
-  //   onChange({segments: getSegments(), segmentMap: getSegmentMap()});
-  // });
+function onStart() {
+  this.dx = 0;
+  this.dy = 0;
+}
+
+function round(x) {
+  return Math.round(x/5) * 5
 }
 
 export default {
   props: {
     baseUrl: String,
-    page: Object,
+    name: String,
+    sampleText: String,
+    segmentMap: Object,
+    segments: Object,
+    shrink: Number,
+    grow: Number,
+    bevel: Number,
   },
   computed: {
     segmentMapToText() {
-      const {segmentMap} = this.page;
-      return Object.entries(segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
+      return Object.entries(this.segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
     }
   },
   mounted() {
-    console.log('mounted!');
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    for (let label in this.page.segments) {
-      const vertices = this.page.segments[label].map(([x, y]) => [x, y]);
+    for (let label in this.segments) {
+      const vertices = this.segments[label].map(([x, y]) => [x, y]);
       drawSegment(raphael, label, vertices)
     }
   },
   template: `
   <p><a :href="baseUrl">home</a></p>
-  <h1>{{ page.name }}</h1>
-  <textarea rows="2" columns="12" class="style-me">{{ page.sampleText }}</textarea>
+  <h1>{{ name }}</h1>
+  <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
   <button class="style-me" id="download">GET FONT</button>
   <textarea rows="10" :value="segmentMapToText" />
   <div ref="raphael" />
