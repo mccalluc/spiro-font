@@ -1,4 +1,5 @@
 import { drawSegment } from "./svgHelper.js";
+import { makeFont, makeCssFontFace } from "./fonts.js"
 
 export default {
   props: {
@@ -21,8 +22,31 @@ export default {
     }
   },
   computed: {
-    segmentMapToText() {
+    segmentMapAsText() {
       return Object.entries(this.segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
+    },
+    font() {
+      console.groupCollapsed('Font paramters')
+      console.log(`segmentMap: ${JSON.stringify(this.segmentMap, null, 2)}`);
+      console.log(`segments: ${JSON.stringify(this.segments).replaceAll(',"', ',\n  "')}`);
+      console.groupEnd();
+      const font = makeFont({
+        fontName: 'spiro-font',
+        segmentMap: this.segmentMap,
+        segments: this.segments,
+        shrink: this.shrink,
+        grow: this.grow,
+        bevel: this.bevel
+      });
+      // Vue does not allow us to include <style> in a template;
+      // Happy to find a better way to do this!
+      document.getElementById('font-face').innerHTML = makeCssFontFace('spiro-font', font);
+      return font;
+    }
+  },
+  methods: {
+    downloadFont() {
+      this.font.download()
     }
   },
   mounted() {
@@ -34,14 +58,14 @@ export default {
     }
   },
   template: `
-  <p><a :href="baseUrl">home</a></p>
-  <h1>{{ name }}</h1>
-  <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
-  <button class="style-me" id="download">GET FONT</button>
-  <textarea rows="10" :value="segmentMapToText" />
-  <label>shrink: <input v-model="shrink"></label>
-  <label>grow: <input v-model="grow"></label>
-  <label>bevel: <input v-model="bevel"></label>
-  <div ref="raphael" />
+    <p><a :href="baseUrl">home</a></p>
+    <h1>{{ name }}</h1>
+    <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
+    <button class="style-me" @click="downloadFont">GET FONT</button>
+    <textarea rows="10" :value="segmentMapAsText" />
+    <label>shrink: <input v-model="shrink"></label>
+    <label>grow: <input v-model="grow"></label>
+    <label>bevel: <input v-model="bevel"></label>
+    <div ref="raphael" />
   `
 }
