@@ -13,6 +13,19 @@
     </style>
   </head>
   <body>
+    <script src="https://unpkg.com/vue@3"></script>
+    
+    <div id="app"><main-component></main-component></div>
+    
+    <script type="module">
+      import MainComponent from '{{ site.baseurl }}/assets/js/MainComponent.js'
+      Vue.createApp({
+        components: {
+          MainComponent
+        }
+      }).mount('#app')
+    </script>
+
     <p><a href="{{ site.baseurl }}/">home</a></p>
     <h1>{{ page.name }}</h1>
     {{ content }}
