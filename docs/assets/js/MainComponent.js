@@ -5,14 +5,16 @@ export default {
     baseUrl: String,
     name: String,
     sampleText: String,
-    segmentMap: Object,
-    segments: Object,
+    initSegmentMap: Object,
+    initSegments: Object,
     initShrink: Number,
     initGrow: Number,
     initBevel: Number,
   },
   data() {
     return {
+      segmentMap: this.initSegmentMap,
+      segments: this.initSegments,
       shrink: this.initShrink,
       grow: this.initGrow,
       bevel: this.initBevel,

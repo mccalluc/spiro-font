@@ -38,8 +38,8 @@
           baseUrl: '{{ site.baseurl }}/',
           name: '{{ page.name }}',
           sampleText: `{{ page.sampleText }}`, // Will break if sampleText includes "`".
-          segmentMap: {{ page.segmentMap | jsonify }},
-          segments: {{ page.segments | jsonify }},
+          initSegmentMap: {{ page.segmentMap | jsonify }},
+          initSegments: {{ page.segments | jsonify }},
           initShrink: {{ page.shrink }},
           initGrow: {{ page.grow }},
           initBevel: {{ page.bevel }},
