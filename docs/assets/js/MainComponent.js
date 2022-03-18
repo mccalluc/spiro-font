@@ -47,6 +47,15 @@ export default {
   methods: {
     downloadFont() {
       this.font.download()
+    },
+    textToSegmentMap(event) {
+      const text = event.target.value;
+      const segmentMap = Object.fromEntries(
+        text.split('\n')
+        .map((line) => line.split(/\s+/))
+        .filter(([key, value]) => Boolean(key))
+      );
+      this.segmentMap = {' ': '', ...segmentMap};
     }
   },
   mounted() {
@@ -56,13 +65,16 @@ export default {
       const vertices = this.segments[label].map(([x, y]) => [x, y]);
       drawSegment(raphael, label, vertices)
     }
+
+    // Touch this.font to trigger generation:
+    console.log(this.font);
   },
   template: `
     <p><a :href="baseUrl">home</a></p>
     <h1>{{ name }}</h1>
     <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
     <button class="style-me" @click="downloadFont">GET FONT</button>
-    <textarea rows="10" :value="segmentMapAsText" />
+    <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
