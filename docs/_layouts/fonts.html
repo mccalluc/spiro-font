@@ -13,7 +13,7 @@
     </style>
   </head>
   <body>
-    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue@3.2.31"></script>
     
     <div id="app">
       <main-component/>
@@ -21,6 +21,13 @@
     
     <script type="module">
       import MainComponent from '{{ site.baseurl }}/assets/js/MainComponent.js'
+
+      // const segmentMap = {{ page.segmentMap | jsonify }};
+      // const segments = {{ page.segments | jsonify }};
+      // const shrink = {{ page.shrink }};
+      // const grow = {{ page.grow }};
+      // const bevel = {{ page.bevel }};
+
       Vue.createApp(
         {
           components: {
@@ -42,18 +49,18 @@
     <script src="https://unpkg.com/raphael@2.3.0/raphael.min.js"></script>
     
     <script type="module">
-      import main from '{{ site.baseurl }}/assets/js/main.js';
-      const segmentMap = {{ page.segmentMap | jsonify }};
-      const segments = {{ page.segments | jsonify }};
-      const shrink = {{ page.shrink }};
-      const grow = {{ page.grow }};
-      const bevel = {{ page.bevel }};
-      main({
-        fontName: 'spiro-font',
-        segmentMap, segments, shrink, grow, bevel,
-        controlsContainer: document.getElementById('controls'),
-        downloadButton: document.getElementById('download')
-      });
+      // import main from '{{ site.baseurl }}/assets/js/main.js';
+      // const segmentMap = {{ page.segmentMap | jsonify }};
+      // const segments = {{ page.segments | jsonify }};
+      // const shrink = {{ page.shrink }};
+      // const grow = {{ page.grow }};
+      // const bevel = {{ page.bevel }};
+      // main({
+      //   fontName: 'spiro-font',
+      //   segmentMap, segments, shrink, grow, bevel,
+      //   controlsContainer: document.getElementById('controls'),
+      //   downloadButton: document.getElementById('download')
+      // });
     </script>
   </body>
 </html>
