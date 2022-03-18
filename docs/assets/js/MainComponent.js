@@ -63,9 +63,9 @@ export default {
     <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
     <button class="style-me" @click="downloadFont">GET FONT</button>
     <textarea rows="10" :value="segmentMapAsText" />
-    <label>shrink: <input v-model="shrink"></label>
-    <label>grow: <input v-model="grow"></label>
-    <label>bevel: <input v-model="bevel"></label>
+    <label>shrink: <input type="number" v-model.lazy="shrink"></label>
+    <label>grow: <input type="number" v-model.lazy="grow"></label>
+    <label>bevel: <input type="number" v-model.lazy="bevel"></label>
     <div ref="raphael" />
   `
 }
