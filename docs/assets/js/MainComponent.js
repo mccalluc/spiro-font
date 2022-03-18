@@ -7,9 +7,16 @@ export default {
     sampleText: String,
     segmentMap: Object,
     segments: Object,
-    shrink: Number,
-    grow: Number,
-    bevel: Number,
+    initShrink: Number,
+    initGrow: Number,
+    initBevel: Number,
+  },
+  data() {
+    return {
+      shrink: this.initShrink,
+      grow: this.initGrow,
+      bevel: this.initBevel,
+    }
   },
   computed: {
     segmentMapToText() {
@@ -30,6 +37,9 @@ export default {
   <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
   <button class="style-me" id="download">GET FONT</button>
   <textarea rows="10" :value="segmentMapToText" />
+  <label>shrink: <input v-model="shrink"></label>
+  <label>grow: <input v-model="grow"></label>
+  <label>bevel: <input v-model="bevel"></label>
   <div ref="raphael" />
   `
 }

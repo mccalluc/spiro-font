@@ -10,6 +10,9 @@
         font-size: 2em;
         font-family: 'spiro-font';
       }
+      label {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -34,12 +37,12 @@
         {
           baseUrl: '{{ site.baseurl }}/',
           name: '{{ page.name }}',
-          sampleText: `{{ page.sampleText }}`,
+          sampleText: `{{ page.sampleText }}`, // Will break if sampleText includes "`".
           segmentMap: {{ page.segmentMap | jsonify }},
           segments: {{ page.segments | jsonify }},
-          shrink: {{ page.shrink }},
-          grow: {{ page.grow }},
-          bevel: {{ page.bevel }},
+          initShrink: {{ page.shrink }},
+          initGrow: {{ page.grow }},
+          initBevel: {{ page.bevel }},
         }  
       ).mount('#app')
     </script>
