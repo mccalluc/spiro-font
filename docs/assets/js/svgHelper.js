@@ -1,4 +1,5 @@
-export function drawSegment(raphael, label, vertices) {
+export function drawSegment(raphael, label, segments) {
+  const vertices = segments[label];
   const first = vertices[0];
   const rest = vertices.slice(1);
   const path = [
@@ -40,7 +41,10 @@ export function drawSegment(raphael, label, vertices) {
     const cx = round(this.attr('cx'));
     const cy = round(this.attr('cy'));
     this.attr({cx, cy});
-    console.log('TODO: emit segment update event');
+    console.log('before', segments[label]);
+    segments[label] = [[0,0], [50,50], [25,100]];
+    // TODO: This is a proxy object... but I don't see the changes at the top level.
+    console.log('after', segments[label]);
   });
 }
 

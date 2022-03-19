@@ -61,9 +61,8 @@ export default {
   mounted() {
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    for (let label in this.segments) {
-      const vertices = this.segments[label].map(([x, y]) => [x, y]);
-      drawSegment(raphael, label, vertices)
+    for (const label in this.segments) {
+      drawSegment(raphael, label, this.segments)
     }
 
     // Touch this.font to trigger generation:
