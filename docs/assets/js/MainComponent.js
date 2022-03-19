@@ -61,12 +61,16 @@ export default {
   mounted() {
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
+    function forceRegen() {
+      // Update from callbacks registered in Raphael were not propagating, so force it:
+      console.log('force regen', this.font)
+    }
     for (const label in this.segments) {
-      drawSegment(raphael, label, this.segments)
+      drawSegment(raphael, label, this.segments, forceRegen.bind(this))
     }
 
-    // Touch this.font to trigger generation:
-    console.log(this.font);
+    // Touch this.font to trigger immediate generation:
+    console.log('force regen on mount', this.font);
   },
   template: `
     <p><a :href="baseUrl">home</a></p>

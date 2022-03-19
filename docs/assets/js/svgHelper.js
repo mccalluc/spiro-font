@@ -1,4 +1,4 @@
-export function drawSegment(raphael, label, segments) {
+export function drawSegment(raphael, label, segments, forceRegen) {
   const vertices = segments[label];
   const first = vertices[0];
   const rest = vertices.slice(1);
@@ -43,8 +43,10 @@ export function drawSegment(raphael, label, segments) {
     this.attr({cx, cy});
     console.log('before', segments[label]);
     segments[label] = [[0,0], [50,50], [25,100]];
-    // TODO: This is a proxy object... but I don't see the changes at the top level.
-    console.log('after', segments[label]);
+    // TODO: segments is a proxy object...
+    // and I can see the state change in the debugger...
+    // but the UI is not updating!
+    forceRegen()
   });
 }
 
