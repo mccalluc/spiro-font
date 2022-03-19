@@ -41,13 +41,23 @@ export function drawSegment(raphael, label, segments, forceRegen) {
     const cx = round(this.attr('cx'));
     const cy = round(this.attr('cy'));
     this.attr({cx, cy});
-    console.log('before', segments[label]);
-    segments[label] = [[0,0], [50,50], [25,100]];
+    const newSegments = getSegments(raphael)
+    segments[label] = newSegments[label];
     // TODO: segments is a proxy object...
     // and I can see the state change in the debugger...
     // but the UI is not updating!
     forceRegen()
   });
+}
+
+function getSegments(raphael) {
+  const segments = {};
+  raphael.forEach((element) => {
+    const label = element.getData()?.label
+    if (!label) return;
+    segments[label] = element.attrs.path.slice(0, -1).map((step) => step.slice(1));
+  });
+  return segments
 }
 
 function findCentroid(vertices) {
