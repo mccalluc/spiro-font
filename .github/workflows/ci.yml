@@ -23,4 +23,4 @@ jobs:
       run: npm ci
 
     - name: Run test script
-      run: npm run test
+      run: ./test.sh
