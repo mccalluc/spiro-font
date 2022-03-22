@@ -10,3 +10,7 @@ parserOptions:
 plugins:
   - vue
 rules: {}
+globals:
+  Raphael: readonly
+  jsts: readonly
+  opentype: readonly

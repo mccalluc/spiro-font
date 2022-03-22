@@ -33,7 +33,12 @@ export default class Stencil {
     const segments = self.segments;
     segmentNames.forEach((name) => {
       try {
-        const segment = scale({points: segments[name], shrink, grow, bevel});
+        const segment = scale({
+          points: segments[name],
+          shrink: self.shrink,
+          grow: self.grow,
+          bevel: self.bevel,
+        });
         path.moveTo(...segment[0]);
         segment.slice(1).forEach((point) => {
           path.lineTo(...point);
