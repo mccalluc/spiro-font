@@ -1,0 +1,15 @@
+{
+  "name": "spiro-font-tests",
+  "version": "1.0.0",
+  "description": "Tests for spiro-font",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx eslint docs/assets/js/ && echo 'PASS!'"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-plugin-vue": "^8.5.0"
+  }
+}
