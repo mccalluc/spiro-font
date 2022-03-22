@@ -14,13 +14,19 @@ jobs:
       with:
         submodules: 'recursive'
 
-    - name: Set up Node 14.1.0
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+      with:
+        ruby-version: '3.1'
+    - name: Install Ruby dependencies
+      run: cd docs; bundle install; cd -
+
+    - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: '14.1.0'
-   
-    - name: Install node dependencies
+    - name: Install Node dependencies
       run: npm ci
 
     - name: Run test script
-      run: npm run test
+      run: ./test.sh
