@@ -53,7 +53,7 @@ export default {
       const segmentMap = Object.fromEntries(
         text.split('\n')
         .map((line) => line.split(/\s+/))
-        .filter(([key, value]) => Boolean(key))
+        .filter(([key]) => Boolean(key))
       );
       this.segmentMap = {' ': '', ...segmentMap};
     }
