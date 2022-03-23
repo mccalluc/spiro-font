@@ -45,12 +45,7 @@ export default {
       return font;
     },
     cssFontFace() {
-      const css = makeCssFontFace('spiro-font', this.font);
-      // Vue does not allow us to include <style> in a template;
-      // Happy to find a better way to do this!
-      document.getElementById('font-face').innerHTML = css;
-      // ...but we still need to make sure the return value is used for reactivity to work.
-      return css;
+      return makeCssFontFace('spiro-font', this.font);
     }
   },
   methods: {
@@ -79,6 +74,9 @@ export default {
     }
   },
   template: `
+    <component :is="'style'">
+      {{ cssFontFace }}
+    </component>
     <p><a :href="baseUrl">home</a></p>
     <h1>{{ name }}</h1>
     <details><summary>CSS font face</summary>
