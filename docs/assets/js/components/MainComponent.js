@@ -1,5 +1,5 @@
-import { drawSegment } from "./svgHelper.js";
-import { makeFont, makeCssFontFace } from "./fontHelper.js"
+import { drawSegment } from "../svgHelper.js";
+import { makeFont, makeCssFontFace } from "../fontHelper.js"
 
 export default {
   props: {
