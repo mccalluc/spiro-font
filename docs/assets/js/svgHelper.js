@@ -1,4 +1,4 @@
-export function drawSegment(raphael, label, segments, forceRegen) {
+export function drawSegment({raphael, label, segments, forceRegen}) {
   const vertices = segments[label];
   const first = vertices[0];
   const rest = vertices.slice(1);
