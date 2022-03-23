@@ -7,9 +7,6 @@ export default {
     segments: Object,
     font: Object,
   },
-  data() {
-    return {}
-  },
   computed: {
     cssFontFace() {
       return makeCssFontFace('spiro-font', this.font);
