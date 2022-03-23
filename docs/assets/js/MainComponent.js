@@ -92,8 +92,8 @@ export default {
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
-    <select>
-      <option v-for="char in charChoices">{{ char }}</option>
+    <select v-model="currentChar">
+      <option v-for="char in charChoices" :value="char">{{ char }}</option>
     </select>
     <div ref="raphael" />
   `
