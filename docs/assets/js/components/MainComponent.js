@@ -1,6 +1,8 @@
 import { drawSegment } from "../svgHelper.js";
 import { makeFont, makeCssFontFace } from "../fontHelper.js"
 
+import Style from "./Style.js"
+
 export default {
   props: {
     baseUrl: String,
@@ -73,29 +75,18 @@ export default {
       })
     }
   },
+  components: {
+    Style,
+  },
   template: `
-    <component :is="'style'">
-      {{ cssFontFace }}
-      <template v-for="(_, segmentName) in segments">
-        <template v-if="segmentMap[currentChar].includes(segmentName)">
-          #segment-{{segmentName}} {
-            fill: #444;
-          }
-        </template>
-        <template v-else>
-          #segment-{{segmentName}} {
-            fill: #BBB;
-          }
-        </template>
-      </template>
-    </component>
+    <Style
+      :currentChar="currentChar"
+      :segmentMap="segmentMap"
+      :segments="segments"
+      :font="font"
+    />
     <p><a :href="baseUrl">home</a></p>
     <h1>{{ name }}</h1>
-    <details><summary>CSS font face</summary>
-      <pre>
-        {{ cssFontFace }}
-      </pre>
-    </details>
     <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
     <button class="style-me" @click="downloadFont">GET FONT</button>
     <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
