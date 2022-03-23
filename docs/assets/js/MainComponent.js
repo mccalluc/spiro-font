@@ -14,6 +14,7 @@ export default {
   },
   data() {
     return {
+      currentChar: '8', 
       segmentMap: this.initSegmentMap,
       segments: this.initSegments,
       shrink: this.initShrink,
@@ -22,6 +23,9 @@ export default {
     }
   },
   computed: {
+    charChoices() {
+      return Object.keys(this.segmentMap);
+    },
     segmentMapAsText() {
       return Object.entries(this.segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
     },
@@ -88,6 +92,9 @@ export default {
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
+    <select>
+      <option v-for="char in charChoices">{{ char }}</option>
+    </select>
     <div ref="raphael" />
   `
 }
