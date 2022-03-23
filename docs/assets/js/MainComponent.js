@@ -38,10 +38,15 @@ export default {
         grow: this.grow,
         bevel: this.bevel
       });
+      return font;
+    },
+    cssFontFace() {
+      const css = makeCssFontFace('spiro-font', this.font);
       // Vue does not allow us to include <style> in a template;
       // Happy to find a better way to do this!
-      document.getElementById('font-face').innerHTML = makeCssFontFace('spiro-font', font);
-      return font;
+      document.getElementById('font-face').innerHTML = css;
+      // ...but we still need to make sure the return value is used for reactivity to work.
+      return css;
     }
   },
   methods: {
@@ -61,20 +66,22 @@ export default {
   mounted() {
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    function forceRegen() {
-      // Update from callbacks registered in Raphael were not propagating, so force it:
-      console.log('force regen', this.font)
-    }
     for (const label in this.segments) {
-      drawSegment(raphael, label, this.segments, forceRegen.bind(this))
+      drawSegment({
+        raphael,
+        label,
+        segments: this.segments,
+      })
     }
-
-    // Touch this.font to trigger immediate generation:
-    console.log('force regen on mount', this.font);
   },
   template: `
     <p><a :href="baseUrl">home</a></p>
     <h1>{{ name }}</h1>
+    <details><summary>CSS font face</summary>
+      <pre>
+        {{ cssFontFace }}
+      </pre>
+    </details>
     <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
     <button class="style-me" @click="downloadFont">GET FONT</button>
     <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />

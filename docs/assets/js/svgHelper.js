@@ -1,4 +1,4 @@
-export function drawSegment(raphael, label, segments, forceRegen) {
+export function drawSegment({raphael, label, segments}) {
   const vertices = segments[label];
   const first = vertices[0];
   const rest = vertices.slice(1);
@@ -43,10 +43,6 @@ export function drawSegment(raphael, label, segments, forceRegen) {
     this.attr({cx, cy});
     const newSegments = getSegments(raphael)
     segments[label] = newSegments[label];
-    // TODO: segments is a proxy object...
-    // and I can see the state change in the debugger...
-    // but the UI is not updating!
-    forceRegen()
   });
 }
 
