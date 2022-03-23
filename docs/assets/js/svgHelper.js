@@ -8,7 +8,8 @@ export function drawSegment({raphael, label, segments}) {
     ['Z']
   ];
 
-  const polygon = raphael.path(path).attr('fill','#444').data('label', label);
+  const polygon = raphael.path(path).data('label', label);
+  polygon.node.setAttribute('id', `segment-${label}`);
 
   const centroid = findCentroid(vertices);
   const text = raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');

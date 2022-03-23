@@ -76,6 +76,18 @@ export default {
   template: `
     <component :is="'style'">
       {{ cssFontFace }}
+      <template v-for="(_, segmentName) in segments">
+        <template v-if="segmentMap[currentChar].includes(segmentName)">
+          #segment-{{segmentName}} {
+            fill: #F00;
+          }
+        </template>
+        <template v-else>
+          #segment-{{segmentName}} {
+            fill: #00F;
+          }
+        </template>
+      </template>
     </component>
     <p><a :href="baseUrl">home</a></p>
     <h1>{{ name }}</h1>
