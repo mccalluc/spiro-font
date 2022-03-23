@@ -66,16 +66,11 @@ export default {
   mounted() {
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    function forceRegen() {
-      // Update from callbacks registered in Raphael were not propagating, so force it:
-      console.log('force regen', this.font)
-    }
     for (const label in this.segments) {
       drawSegment({
         raphael,
         label,
         segments: this.segments,
-        forceRegen: forceRegen.bind(this)
       })
     }
   },
