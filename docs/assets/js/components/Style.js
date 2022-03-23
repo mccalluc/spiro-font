@@ -27,9 +27,18 @@ export default {
       </template>
     </component>
 
-    <details><summary>CSS font face</summary>
+    <details><summary>Use this font</summary>
+      Copy and paste this into your HTML:
       <pre>
-        {{ cssFontFace }}
+&lt;style&gt;
+.spiro-font {
+  font-family: 'spiro-font';
+}
+{{ cssFontFace }}
+&lt;/style&gt;
+&lt;div class="spiro-font"&gt;
+  Hello world!
+&lt;/div&gt;
       </pre>
     </details>
   `
