@@ -16,16 +16,14 @@ export default {
     <component :is="'style'">
       {{ cssFontFace }}
       <template v-for="(_, segmentName) in segments">
-        <template v-if="segmentMap[currentChar].includes(segmentName)">
-          #segment-{{segmentName}} {
+        #segment-{{segmentName}} {
+          <template v-if="segmentMap[currentChar].includes(segmentName)">
             fill: #444;
-          }
-        </template>
-        <template v-else>
-          #segment-{{segmentName}} {
+          </template>
+          <template v-else>
             fill: #BBB;
-          }
-        </template>
+          </template>
+        }
       </template>
     </component>
 
