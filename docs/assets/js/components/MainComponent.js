@@ -79,12 +79,12 @@ export default {
       <template v-for="(_, segmentName) in segments">
         <template v-if="segmentMap[currentChar].includes(segmentName)">
           #segment-{{segmentName}} {
-            fill: #F00;
+            fill: #444;
           }
         </template>
         <template v-else>
           #segment-{{segmentName}} {
-            fill: #00F;
+            fill: #BBB;
           }
         </template>
       </template>

@@ -8,7 +8,7 @@ export function drawSegment({raphael, label, segments}) {
     ['Z']
   ];
 
-  const polygon = raphael.path(path).data('label', label);
+  const polygon = raphael.path(path).data('label', label).attr('stroke', '#fff');
   polygon.node.setAttribute('id', `segment-${label}`);
 
   const centroid = findCentroid(vertices);
