@@ -1,7 +1,7 @@
-import { drawSegment } from "../svgHelper.js";
 import { makeFont } from "../fontHelper.js"
 
 import Style from "./Style.js"
+import Foundry from "./Foundry.js"
 
 export default {
   props: {
@@ -54,19 +54,9 @@ export default {
       this.segmentMap = {' ': '', ...segmentMap};
     }
   },
-  mounted() {
-    const raphaelContainer = this.$refs.raphael;
-    const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    for (const label in this.segments) {
-      drawSegment({
-        raphael,
-        label,
-        segments: this.segments,
-      })
-    }
-  },
   components: {
     Style,
+    Foundry
   },
   template: `
     <Style
@@ -75,14 +65,17 @@ export default {
       :segments="segments"
       :font="font"
     />
+
     <button class="style-me" @click="downloadFont">GET FONT</button>
+
     <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
-    <select v-model="currentChar">
-      <option v-for="char in charChoices" :value="char" v-html="char" />
-    </select>
-    <div ref="raphael" />
+
+    <Foundry
+      :initSegmentMap="segmentMap"
+      :initSegments="segments"
+    />
   `
 }
