@@ -1,5 +1,5 @@
 import { drawSegment } from "../svgHelper.js";
-import { makeFont, makeCssFontFace } from "../fontHelper.js"
+import { makeFont } from "../fontHelper.js"
 
 import Style from "./Style.js"
 
@@ -46,9 +46,6 @@ export default {
       });
       return font;
     },
-    cssFontFace() {
-      return makeCssFontFace('spiro-font', this.font);
-    }
   },
   methods: {
     downloadFont() {

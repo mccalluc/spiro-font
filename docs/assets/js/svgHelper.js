@@ -35,8 +35,8 @@ export function drawSegment({raphael, label, segments}) {
       }
     }
   }
-
   const controls = raphael.setFinish();
+
   controls.attr({fill: '#000', stroke: '#fff'});  
   controls.drag(onMove, onStart, function() {
     const cx = round(this.attr('cx'));
