@@ -87,7 +87,7 @@ export default {
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
     <select v-model="currentChar">
-      <option v-for="char in charChoices" :value="char">{{ char }}</option>
+      <option v-for="char in charChoices" :value="char" v-html="char" />
     </select>
     <div ref="raphael" />
   `
