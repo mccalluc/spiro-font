@@ -1,5 +1,3 @@
-import { makeCssFontFace } from "../fontHelper.js"
-
 export default {
   props: {
     currentChar: String,
@@ -42,4 +40,17 @@ export default {
       </pre>
     </details>
   `
+}
+
+function fontAsBase64(font) {
+  return btoa(String.fromCharCode.apply(null, new Uint8Array(font.toArrayBuffer())));
+}
+
+function makeCssFontFace(fontName, font) {
+  const fontBase64 = fontAsBase64(font);
+  return `
+@font-face {
+  font-family: "${fontName}";
+  src: url('data:font/opentype;base64,${fontBase64}');
+}`;
 }
