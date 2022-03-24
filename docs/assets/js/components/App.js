@@ -8,20 +8,16 @@ export default {
     baseUrl: String,
     name: String,
     sampleText: String,
-    initSegmentMap: Object,
-    initSegments: Object,
-    initShrink: Number,
-    initGrow: Number,
-    initBevel: Number,
+    params: Object,
   },
   data() {
     return {
-      currentChar: '8', 
-      segmentMap: this.initSegmentMap,
-      segments: this.initSegments,
-      shrink: this.initShrink,
-      grow: this.initGrow,
-      bevel: this.initBevel,
+      currentChar: '8',
+      segmentMap: this.params.segmentMap,
+      segments: this.params.segments,
+      shrink: this.params.shrink,
+      grow: this.params.grow,
+      bevel: this.params.bevel,
     }
   },
   computed: {

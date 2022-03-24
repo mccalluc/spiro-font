@@ -37,12 +37,8 @@
         {
           baseUrl: '{{ site.baseurl }}/',
           name: '{{ page.name }}',
-          sampleText: `{{ page.sampleText }}`, // Will break if sampleText includes "`".
-          initSegmentMap: {{ page.segmentMap | jsonify }},
-          initSegments: {{ page.segments | jsonify }},
-          initShrink: {{ page.shrink }},
-          initGrow: {{ page.grow }},
-          initBevel: {{ page.bevel }},
+          sampleText: `{{ page.sampleText }}`,
+          params: {{ page.params | jsonify }}
         }  
       ).mount('#app-container')
     </script>
