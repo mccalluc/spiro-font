@@ -14,38 +14,33 @@
         display: block;
       }
     </style>
-    <style id="font-face"></style>
   </head>
   <body>
-    <div id="app">
-      <main-component />
+    <div id="app-container">
+      <app />
     </div>
 
-    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
+    {% if jekyll.environment == "production" %}
+      <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
+    {% else %}
+      <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+    {% endif %}
     <script src="https://unpkg.com/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <script src="https://unpkg.com/jsts@2.3.0/dist/jsts.min.js"></script>
     <script src="https://unpkg.com/raphael@2.3.0/raphael.min.js"></script>
     
     <script type="module">
-      import MainComponent from '{{ site.baseurl }}/assets/js/MainComponent.js'
+      import App from '{{ site.baseurl }}/assets/js/components/App.js'
 
       Vue.createApp(
-        {
-          components: {
-            MainComponent
-          }
-        },
+        {components: {App}},
         {
           baseUrl: '{{ site.baseurl }}/',
           name: '{{ page.name }}',
-          sampleText: `{{ page.sampleText }}`, // Will break if sampleText includes "`".
-          initSegmentMap: {{ page.segmentMap | jsonify }},
-          initSegments: {{ page.segments | jsonify }},
-          initShrink: {{ page.shrink }},
-          initGrow: {{ page.grow }},
-          initBevel: {{ page.bevel }},
+          sampleText: `{{ page.sampleText }}`,
+          params: {{ page.params | jsonify }}
         }  
-      ).mount('#app')
+      ).mount('#app-container')
     </script>
   </body>
 </html>

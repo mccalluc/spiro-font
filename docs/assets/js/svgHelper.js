@@ -8,7 +8,8 @@ export function drawSegment({raphael, label, segments}) {
     ['Z']
   ];
 
-  const polygon = raphael.path(path).attr('fill','#444').data('label', label);
+  const polygon = raphael.path(path).data('label', label).attr('stroke', '#fff');
+  polygon.node.setAttribute('id', `segment-${label}`);
 
   const centroid = findCentroid(vertices);
   const text = raphael.text(centroid[0], centroid[1], label).attr('fill', '#fff');
@@ -34,8 +35,8 @@ export function drawSegment({raphael, label, segments}) {
       }
     }
   }
-
   const controls = raphael.setFinish();
+
   controls.attr({fill: '#000', stroke: '#fff'});  
   controls.drag(onMove, onStart, function() {
     const cx = round(this.attr('cx'));

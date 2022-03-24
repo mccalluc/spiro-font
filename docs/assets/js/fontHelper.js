@@ -37,16 +37,3 @@ export function makeFont({fontName, segmentMap, segments, shrink, grow, bevel}) 
   });
   return font;
 }
-
-function fontAsBase64(font) {
-  return btoa(String.fromCharCode.apply(null, new Uint8Array(font.toArrayBuffer())));
-}
-
-export function makeCssFontFace(fontName, font) {
-  const fontBase64 = fontAsBase64(font);
-  return `
-@font-face {
-  font-family: "${fontName}";
-  src: url('data:font/opentype;base64,${fontBase64}');
-}`;
-}
