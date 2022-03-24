@@ -78,9 +78,6 @@ export default {
       :segments="segments"
       :font="font"
     />
-    <p><a :href="baseUrl">home</a></p>
-    <h1>{{ name }}</h1>
-    <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
     <button class="style-me" @click="downloadFont">GET FONT</button>
     <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
