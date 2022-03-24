@@ -14,11 +14,10 @@
         display: block;
       }
     </style>
-    <style id="font-face"></style>
   </head>
   <body>
-    <div id="app">
-      <main-component />
+    <div id="app-container">
+      <app />
     </div>
 
     {% if jekyll.environment == "production" %}
@@ -31,14 +30,10 @@
     <script src="https://unpkg.com/raphael@2.3.0/raphael.min.js"></script>
     
     <script type="module">
-      import MainComponent from '{{ site.baseurl }}/assets/js/components/MainComponent.js'
+      import App from '{{ site.baseurl }}/assets/js/components/App.js'
 
       Vue.createApp(
-        {
-          components: {
-            MainComponent
-          }
-        },
+        {components: {App}},
         {
           baseUrl: '{{ site.baseurl }}/',
           name: '{{ page.name }}',
@@ -49,7 +44,7 @@
           initGrow: {{ page.grow }},
           initBevel: {{ page.bevel }},
         }  
-      ).mount('#app')
+      ).mount('#app-container')
     </script>
   </body>
 </html>
