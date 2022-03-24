@@ -1,7 +1,7 @@
 ---
 name: Sharp EL-8
 sampleText: '0123456789'
-params:
+init:
   shrink: 0
   grow: 4
   bevel: 0

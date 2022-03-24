@@ -42,7 +42,7 @@
           components: {App}
         },
         {
-          params: {{ page.params | jsonify }}
+          init: {{ page.init | jsonify }}
         }  
       ).mount('#app-container')
     </script>

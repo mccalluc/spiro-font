@@ -5,19 +5,16 @@ import Style from "./Style.js"
 
 export default {
   props: {
-    baseUrl: String,
-    name: String,
-    sampleText: String,
-    params: Object,
+    init: Object,
   },
   data() {
     return {
       currentChar: '8',
-      segmentMap: this.params.segmentMap,
-      segments: this.params.segments,
-      shrink: this.params.shrink,
-      grow: this.params.grow,
-      bevel: this.params.bevel,
+      segmentMap: this.init.segmentMap,
+      segments: this.init.segments,
+      shrink: this.init.shrink,
+      grow: this.init.grow,
+      bevel: this.init.bevel,
     }
   },
   computed: {
