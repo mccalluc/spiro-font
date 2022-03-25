@@ -19,6 +19,21 @@ export default {
       return Object.keys(this.segmentMap);
     },
   },
+  methods: {
+    segmentClickHandler(e) {
+      // TODO: Is the label available?
+      // If not, get rid of it?
+      const segment = e.target.id.split('-')[1];
+      if (this.segmentMap[this.currentChar].includes(segment)) {
+        // TODO: Let's just use a set, instead of munging strings.
+        const prev = this.segmentMap[this.currentChar];
+        this.segmentMap[this.currentChar] = prev.replace(segment, '')
+      } else {
+        this.segmentMap[this.currentChar] += segment;
+      }
+      this.$emit('update:segmentMap')
+    }
+  },
   mounted() {
     const raphaelContainer = this.$refs.raphael;
     const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
@@ -27,6 +42,7 @@ export default {
         raphael,
         label,
         segments: this.segments,
+        segmentClickHandler: this.segmentClickHandler,
       })
     }
   },

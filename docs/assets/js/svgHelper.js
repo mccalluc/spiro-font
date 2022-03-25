@@ -1,4 +1,4 @@
-export function drawSegment({raphael, label, segments}) {
+export function drawSegment({raphael, label, segments, segmentClickHandler}) {
   const vertices = segments[label];
   const first = vertices[0];
   const rest = vertices.slice(1);
@@ -9,7 +9,7 @@ export function drawSegment({raphael, label, segments}) {
   ];
 
   const polygon = raphael.path(path).data('label', label).attr('stroke', '#fff');
-  polygon.click(function(e) {console.log(e)})
+  polygon.click(segmentClickHandler);
   polygon.node.setAttribute('id', `segment-${label}`);
 
   // const centroid = findCentroid(vertices);
