@@ -1,6 +1,5 @@
 export default {
   props: {
-    currentChar: String,
     segmentMap: Object,
     segments: Object,
     font: Object,
@@ -13,16 +12,6 @@ export default {
   template: `
     <component :is="'style'">
       {{ cssFontFace }}
-      <template v-for="(_, segmentName) in segments">
-        #segment-{{segmentName}} {
-          <template v-if="segmentMap[currentChar].includes(segmentName)">
-            fill: #444;
-          </template>
-          <template v-else>
-            fill: #BBB;
-          </template>
-        }
-      </template>
     </component>
 
     <details><summary>Use this font</summary>

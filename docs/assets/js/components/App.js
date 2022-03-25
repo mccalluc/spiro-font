@@ -9,7 +9,6 @@ export default {
   },
   data() {
     return {
-      currentChar: '8',
       segmentMap: this.init.segmentMap,
       segments: this.init.segments,
       shrink: this.init.shrink,
@@ -60,7 +59,6 @@ export default {
   },
   template: `
     <Style
-      :currentChar="currentChar"
       :segmentMap="segmentMap"
       :segments="segments"
       :font="font"
@@ -74,8 +72,8 @@ export default {
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
 
     <Foundry
-      :initSegmentMap="segmentMap"
-      :initSegments="segments"
+      :segmentMap="segmentMap"
+      :segments="segments"
     />
   `
 }
