@@ -1,23 +1,19 @@
-import { drawSegment } from "../svgHelper.js";
 import { makeFont } from "../fontHelper.js"
 
 import Style from "./Style.js"
+import Foundry from "./Foundry.js"
 
 export default {
   props: {
-    baseUrl: String,
-    name: String,
-    sampleText: String,
-    params: Object,
+    init: Object,
   },
   data() {
     return {
-      currentChar: '8',
-      segmentMap: this.params.segmentMap,
-      segments: this.params.segments,
-      shrink: this.params.shrink,
-      grow: this.params.grow,
-      bevel: this.params.bevel,
+      segmentMap: this.init.segmentMap,
+      segments: this.init.segments,
+      shrink: this.init.shrink,
+      grow: this.init.grow,
+      bevel: this.init.bevel,
     }
   },
   computed: {
@@ -57,38 +53,27 @@ export default {
       this.segmentMap = {' ': '', ...segmentMap};
     }
   },
-  mounted() {
-    const raphaelContainer = this.$refs.raphael;
-    const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
-    for (const label in this.segments) {
-      drawSegment({
-        raphael,
-        label,
-        segments: this.segments,
-      })
-    }
-  },
   components: {
     Style,
+    Foundry
   },
   template: `
     <Style
-      :currentChar="currentChar"
       :segmentMap="segmentMap"
       :segments="segments"
       :font="font"
     />
-    <p><a :href="baseUrl">home</a></p>
-    <h1>{{ name }}</h1>
-    <textarea rows="2" columns="12" class="style-me">{{ sampleText }}</textarea>
+
     <button class="style-me" @click="downloadFont">GET FONT</button>
+
     <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
     <label>shrink: <input type="number" v-model.lazy="shrink"></label>
     <label>grow: <input type="number" v-model.lazy="grow"></label>
     <label>bevel: <input type="number" v-model.lazy="bevel"></label>
-    <select v-model="currentChar">
-      <option v-for="char in charChoices" :value="char">{{ char }}</option>
-    </select>
-    <div ref="raphael" />
+
+    <Foundry
+      :segmentMap="segmentMap"
+      :segments="segments"
+    />
   `
 }

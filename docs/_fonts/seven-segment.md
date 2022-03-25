@@ -1,7 +1,7 @@
 ---
 name: Seven Segment
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
-params:
+init:
   shrink: 8
   grow: 11
   bevel: 0
