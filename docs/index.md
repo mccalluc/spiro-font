@@ -1,6 +1,6 @@
 ---
 title: spiro-font
-layout: default
+layout: home
 ---
 
 # spiro-font
