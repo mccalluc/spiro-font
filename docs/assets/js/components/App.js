@@ -43,37 +43,64 @@ export default {
     downloadFont() {
       this.font.download()
     },
-    textToSegmentMap(event) {
-      const text = event.target.value;
-      const segmentMap = Object.fromEntries(
-        text.split('\n')
-        .map((line) => line.split(/\s+/))
-        .filter(([key]) => Boolean(key))
-      );
-      this.segmentMap = {' ': '', ...segmentMap};
-    }
   },
   components: {
     Style,
     Foundry
   },
   template: `
-    <Style
-      :segmentMap="segmentMap"
-      :segments="segments"
-      :font="font"
-    />
+    <div class="col-6">
+      <div class="card interactive">
+        <div class="card-body">
 
-    <button class="style-me" @click="downloadFont">GET FONT</button>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="shrink">shrink:</label>
+            </div>
+            <div class="col-6">
+              <input type="number" class="form-control" id="shrink" v-model.lazy="shrink">
+            </div>
+          </div>
 
-    <textarea rows="10" :value="segmentMapAsText" @change="textToSegmentMap" />
-    <label>shrink: <input type="number" v-model.lazy="shrink"></label>
-    <label>grow: <input type="number" v-model.lazy="grow"></label>
-    <label>bevel: <input type="number" v-model.lazy="bevel"></label>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="grow" class="float-right">grow:</label>
+            </div>
+            <div class="col-6">
+              <input type="number" class="form-control" id="grow" v-model.lazy="grow">
+            </div>
+          </div>
 
-    <Foundry
-      :segmentMap="segmentMap"
-      :segments="segments"
-    />
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="bevel">bevel:</label>
+            </div>
+            <div class="col-6">
+              <input type="number" class="form-control" id="bevel" v-model.lazy="bevel">
+            </div>
+          </div>
+
+          <button @click="downloadFont">Download font</button>
+
+          <Style
+            :segmentMap="segmentMap"
+            :segments="segments"
+            :font="font"
+          />
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card interactive">
+        <div class="card-body">
+          <Foundry
+            :segmentMap="segmentMap"
+            :segments="segments"
+          />
+        </div>
+      </div>
+    </div>
   `
 }

@@ -2,23 +2,31 @@
 layout: default
 ---
 
+<div class="row">
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-body">
+        <p><a href="{{ site.url }}{{ site.baseurl }}/">home</a></p>
+        <h1>{{ page.name }}</h1>
+        <p>{{ page.content }}</p>
+        <p contenteditable class="style-me" id="preview">{{ page.sampleText }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app-container" class="row">
+  <app />
+</div>
+
 {% if jekyll.environment == "production" %}
-  <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
 {% else %}
-  <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
 {% endif %}
 <script src="https://unpkg.com/opentype.js@1.3.4/dist/opentype.min.js"></script>
 <script src="https://unpkg.com/jsts@2.3.0/dist/jsts.min.js"></script>
 <script src="https://unpkg.com/raphael@2.3.0/raphael.min.js"></script>
-
-<p><a href="{{ site.url }}{{ site.baseurl }}/">home</a></p>
-<h1>{{ page.name }}</h1>
-<p>{{ page.content }}</p>
-<textarea rows="2" columns="12" class="style-me">{{ page.sampleText }}</textarea>
-
-<div id="app-container">
-  <app />
-</div>
 
 <script type="module">
   import App from '{{ site.baseurl }}/assets/js/components/App.js'
