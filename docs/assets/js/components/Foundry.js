@@ -24,14 +24,14 @@ export default {
       // TODO: Is the label available?
       // If not, get rid of it?
       const segment = e.target.id.split('-')[1];
-      if (this.segmentMap[this.currentChar].includes(segment)) {
+      const prev = this.segmentMap[this.currentChar];
+      delete this.segmentMap[this.currentChar];
+      if (prev.includes(segment)) {
         // TODO: Let's just use a set, instead of munging strings.
-        const prev = this.segmentMap[this.currentChar];
         this.segmentMap[this.currentChar] = prev.replace(segment, '')
       } else {
-        this.segmentMap[this.currentChar] += segment;
+        this.segmentMap[this.currentChar] = prev + segment;
       }
-      this.$emit('update:segmentMap')
     }
   },
   mounted() {
