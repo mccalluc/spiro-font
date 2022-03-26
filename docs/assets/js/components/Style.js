@@ -14,8 +14,7 @@ export default {
       {{ cssFontFace }}
     </component>
 
-    <details><summary>Use this font</summary>
-      Copy and paste this into your HTML:
+    <details><summary>Copy CSS</summary>
       <pre>
 &lt;style&gt;
 .spiro-font {
