@@ -6,23 +6,26 @@ init:
   grow: 4
   bevel: 0
   segmentMap: {
-      "0": "ABF",
-      "1": "GH",
-      "2": "ABED",
-      "3": "ABCD",
-      "4": "FGH",
-      "5": "ACDF",
-      "6": "ACDEF",
-      "7": "ABH",
-      "8": "ABCDEF",
-      "9": "ABCDF",
-      "E": "ADEF",
-      "F": "AEF",
-      "G": "ABCDF",
-      "N": "CEF",
-      "O": "ABF",
-      "T": "AGH",
-      " ": ""
+    "0": "ABF",
+    "1": "GH",
+    "2": "ABED",
+    "3": "ABCD",
+    "4": "FGH",
+    "5": "ACDF",
+    "6": "ACDEF",
+    "7": "ABH",
+    "8": "ABCDEF",
+    "9": "ABCDF",
+    "-": "",
+    "s": "AFCD",
+    "p": "ABGH",
+    "i": "GH",
+    "r": "ABGCH",
+    "o": "FAB",
+    "f": "FAE",
+    "n": "ECF",
+    " ": "",
+    "t": "AGH"
     }
   segments: {
       "A": [

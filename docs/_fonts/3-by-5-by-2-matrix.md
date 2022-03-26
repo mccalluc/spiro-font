@@ -29,7 +29,7 @@ init:
     '(': 'bCcEeHhKkOo',
     ')': 'AaEeHhKkMmN',
     '_': 'MmNnOo',
-    '-': 'GgHhIi',
+    '-': 'gHhI',
     '+': 'EeGgHhIiKk',
     '=': 'DdEeFfJjKkLl',
     '{': 'bCcEegHhKkOo',
