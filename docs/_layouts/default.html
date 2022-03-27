@@ -10,6 +10,7 @@
       .spiro-font {
         font-family: 'spiro-font';
         font-size: 0.8em;
+        display: none; /* To avoid flash of unstyled text. */
       }
       a.spiro-font {
         text-decoration: none;
@@ -35,7 +36,7 @@
     <title>spiro-font | {{ page.title }}</title>
   </head>
   <body class="bg-light">
-    <header class="border-bottom bg-white pt-2">
+    <header class="border-bottom bg-white pt-2" style="height: 2em;">
       <div class="container">
         <a href="{{ site.url }}{{ site.baseurl }}/" class="spiro-font">spiro-font</a>
       </div>

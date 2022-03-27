@@ -11,6 +11,9 @@ export default {
   },
   template: `
     <component :is="'style'">
+      .spiro-font {
+        display: inline;
+      }
       {{ cssFontFace }}
     </component>
 
