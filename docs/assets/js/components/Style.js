@@ -17,7 +17,7 @@ export default {
       {{ cssFontFace }}
     </component>
 
-    <details><summary>Copy CSS</summary>
+    <details><summary class="btn btn-primary">Copy CSS</summary>
       <pre>
 &lt;style&gt;
 .spiro-font {

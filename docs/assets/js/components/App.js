@@ -80,7 +80,7 @@ export default {
             </div>
           </div>
 
-          <button @click="downloadFont">Download font</button>
+          <button @click="downloadFont" class="btn btn-primary">Download font</button>
 
           <Style
             :segmentMap="segmentMap"
