@@ -14,7 +14,42 @@ layout: default
   </div>
 </div>
 
-<div id="app-container" class="row">
+<div class="row">
+  <div class="col">
+    <div class="card mb-3">
+      <div class="card-body">
+        <details><summary>Getting started</summary>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                The <b>shrink</b> and <b>grow</b> settings are applied in succession:
+                you can shrink the segments away from each other,
+                and then expand them outward. The <b>bevel</b> setting controls how many points
+                are used at the corners: "0" or "1" will produce sharp edges,
+                while "3" will be almost indistinguishable from a smooth curve.
+              </p>
+              <p>
+                To use your font in a desktop application, you can <b>Download font</b>,
+                or to use it in a web page, <b>Copy CSS</b>. 
+              </p>
+            </div>
+            <div class="col-6">
+              <p>
+                You can also control the <b>stencil</b> used to print individual charaters.
+                The same stencil is used for every character in a font:
+                You can drag the circular <b>control points</b> to change the shape of each segment,
+                or you can select a particular character in the menu, and click on segments
+                to turn them on and off just for that one character.
+              </p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app-container" class="row mb-3">
   <app />
 </div>
 
