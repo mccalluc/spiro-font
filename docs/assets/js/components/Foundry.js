@@ -36,7 +36,7 @@ export default {
   },
   mounted() {
     const raphaelContainer = this.$refs.raphael;
-    const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-20, -20, 300, 300);
+    const raphael = Raphael(raphaelContainer, 0, 0, 200, 200).setViewBox(-40, -40, 290, 290);
     for (const label in this.segments) {
       drawSegment({
         raphael,

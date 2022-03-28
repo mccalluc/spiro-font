@@ -12,7 +12,7 @@ export default {
   template: `
     <component :is="'style'">
       .spiro-font {
-        display: inline;
+        display: block; /* "display: none" on load to avoid flash of unstyled text. */
       }
       {{ cssFontFace }}
     </component>

@@ -53,7 +53,7 @@ export default {
       <div class="card interactive">
         <div class="card-body">
 
-          <div class="form-group row">
+          <div class="form-group row py-1">
             <div class="col-6">
               <label for="shrink">shrink:</label>
             </div>
@@ -62,7 +62,7 @@ export default {
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row py-1">
             <div class="col-6">
               <label for="grow" class="float-right">grow:</label>
             </div>
@@ -71,7 +71,7 @@ export default {
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row py-1">
             <div class="col-6">
               <label for="bevel">bevel:</label>
             </div>
@@ -80,14 +80,22 @@ export default {
             </div>
           </div>
 
-          <button @click="downloadFont" class="btn btn-primary">Download font</button>
+          <div class="form-group row py-1">
+            <div class="col-12">
+              <button @click="downloadFont" class="btn btn-primary py-1">Download font</button>
+            </div>
+          </div>
 
-          <Style
-            :segmentMap="segmentMap"
-            :segments="segments"
-            :font="font"
-          />
-
+          <div class="form-group row py-1">
+            <div class="col-12">
+              <Style
+                :segmentMap="segmentMap"
+                :segments="segments"
+                :font="font"
+              />
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
