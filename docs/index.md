@@ -5,7 +5,7 @@ layout: home
 
 # spiro-font
 
-Like a spirograph, for fonts: Change the parameters, make something interesting, and waste time.
+Like a spirograph, for fonts: Change the parameters, make something pretty, and waste time.
 
 {% for font in site.fonts %}
 {% capture url %}{{ site.baseurl }}{{ font.url }}{% endcapture %}

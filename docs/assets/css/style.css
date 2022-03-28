@@ -1,0 +1,29 @@
+.spiro-font {
+  font-family: 'spiro-font';
+  font-size: 0.8em;
+  display: none; /* To avoid flash of unstyled text. */
+}
+a.spiro-font {
+  text-decoration: none;
+}
+#preview {
+  font-size: 1.8em;
+  max-height: 4em;
+  overflow: scroll;
+  padding-top: 0.5em;
+  line-height: 200%;
+}
+.interactive {
+  min-height: 400px;
+}
+blockquote {
+  border-left: solid #555;
+  padding-left: 1em;
+}
+a {
+  color: #555;
+}
+.btn-primary {
+  background-color: #555;
+  border-color: #555;
+}

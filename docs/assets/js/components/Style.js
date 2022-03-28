@@ -11,10 +11,13 @@ export default {
   },
   template: `
     <component :is="'style'">
+      .spiro-font {
+        display: block; /* "display: none" on load to avoid flash of unstyled text. */
+      }
       {{ cssFontFace }}
     </component>
 
-    <details><summary>Copy CSS</summary>
+    <details><summary class="btn btn-primary">Copy CSS</summary>
       <pre>
 &lt;style&gt;
 .spiro-font {
