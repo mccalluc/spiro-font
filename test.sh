@@ -16,3 +16,5 @@ end changelog
 start npm
 npm run test
 end npm
+
+echo 'PASS!'
