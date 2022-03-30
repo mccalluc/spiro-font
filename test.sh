@@ -8,7 +8,7 @@ die() { set +v; echo "$*" 1>&2 ; sleep 1; exit 1; }
 
 start changelog
 cd docs
-bundler exec jekyll build
+bundle exec jekyll serve &
 cd -
 end changelog
 
@@ -16,3 +16,5 @@ end changelog
 start npm
 npm run test
 end npm
+
+echo 'PASS!'
