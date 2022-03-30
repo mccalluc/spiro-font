@@ -1,7 +1,7 @@
 import { makeFont } from "../fontHelper.js"
 
 import Style from "./Style.js"
-import Foundry from "./Foundry.js"
+import StencilEditor from "./StencilEditor.js"
 
 export default {
   props: {
@@ -46,7 +46,7 @@ export default {
   },
   components: {
     Style,
-    Foundry
+    StencilEditor
   },
   template: `
     <div class="col-6">
@@ -103,7 +103,7 @@ export default {
     <div class="col-6">
       <div class="card interactive">
         <div class="card-body">
-          <Foundry
+          <StencilEditor
             :segmentMap="segmentMap"
             :segments="segments"
           />
