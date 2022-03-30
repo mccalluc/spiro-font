@@ -2,6 +2,7 @@ import { makeFont } from "../fontHelper.js"
 
 import Style from "./Style.js"
 import StencilEditor from "./StencilEditor.js"
+import Input from "./Input.js"
 
 export default {
   props: {
@@ -46,39 +47,17 @@ export default {
   },
   components: {
     Style,
-    StencilEditor
+    StencilEditor,
+    Input,
   },
   template: `
     <div class="col-6">
       <div class="card interactive">
         <div class="card-body">
 
-          <div class="form-group row py-1">
-            <div class="col-6">
-              <label for="shrink">shrink:</label>
-            </div>
-            <div class="col-6">
-              <input type="number" class="form-control" id="shrink" v-model.lazy="shrink">
-            </div>
-          </div>
-
-          <div class="form-group row py-1">
-            <div class="col-6">
-              <label for="grow" class="float-right">grow:</label>
-            </div>
-            <div class="col-6">
-              <input type="number" class="form-control" id="grow" v-model.lazy="grow">
-            </div>
-          </div>
-
-          <div class="form-group row py-1">
-            <div class="col-6">
-              <label for="bevel">bevel:</label>
-            </div>
-            <div class="col-6">
-              <input type="number" class="form-control" id="bevel" v-model.lazy="bevel">
-            </div>
-          </div>
+          <Input :label="'shrink'" v-model="shrink" />
+          <Input :label="'grow'" v-model="grow" />
+          <Input :label="'bevel'" v-model="bevel" />
 
           <div class="form-group row py-1">
             <div class="col-12">
