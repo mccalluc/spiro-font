@@ -10,7 +10,7 @@ export default {
   template: `
     <div class="form-group row py-1">
       <div class="col-6">
-        <label :for="label">{{ label }}:</label>
+        <label :for="label" v-html="label" />
       </div>
       <div class="col-6">
         <input
@@ -18,7 +18,7 @@ export default {
           class="form-control"
           :id="label"
           :value="modelValue"
-          @input="$emit('update:modelValue', $event.target.value)"
+          @input="$emit('update:modelValue', Number($event.target.value))"
         >
       </div>
     </div>
