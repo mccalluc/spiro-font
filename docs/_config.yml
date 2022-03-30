@@ -7,15 +7,15 @@ url: "https://mccalluc.github.io"
 theme: minima
 plugins: []
 collections:
-  fonts:
+  segmented:
     output: True
     permalink: /:collection/:name  # Default includes ".html" extension in url.
 defaults:
   - scope:
       path: ''
-      type: fonts
+      type: segmented
     values:
-      layout: fonts
+      layout: segmented
 
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
