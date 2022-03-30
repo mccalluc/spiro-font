@@ -8,10 +8,14 @@ This project introduced me to these libraries:
 - [Raphaël](https://dmitrybaranovskiy.github.io/raphael/): SVG drawing
 - [Vue.js](https://vuejs.org/): Javascript framework
 
+It also uses [Cypress](https://www.cypress.io/) for end-to-end testing,
+[ESLint](https://eslint.org/) for linting,
+and [Jekyll](https://jekyllrb.com/) for static site generation.
+
 Deployed at: https://mccalluc.github.io/spiro-font/
 
-Use jekyll when developing locally:
+When developing locally:
 ```
+cd docs
 bundler exec jekyll serve
 ```
-(Because of CORS restrictions, the javascript won't work with just `file:` instead of `http:`.)

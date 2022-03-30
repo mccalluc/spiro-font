@@ -7,7 +7,7 @@ layout: home
 
 Like a spirograph, for fonts: Change the parameters, make something pretty, and waste time.
 
-{% for font in site.fonts %}
+{% for font in site.segmented %}
 {% capture url %}{{ site.baseurl }}{{ font.url }}{% endcapture %}
 - [{{ font.name }}]({{ url }})
 {% endfor %}
