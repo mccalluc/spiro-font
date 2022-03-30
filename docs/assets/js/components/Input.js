@@ -3,10 +3,14 @@ export default {
     label: String,
     modelValue: Number,
   },
-  data() {
-    return {}
-  },
   emits: ['update:modelValue'],
+  // Vue's default behavior for .number is:
+  //
+  // > If the value cannot be parsed with parseFloat(),
+  // > then the original value is used instead.
+  // https://vuejs.org/guide/essentials/forms.html#number
+  //
+  // We never want a non-numeric value, so instead we use Number() explicitly. 
   template: `
     <div class="form-group row py-1">
       <div class="col-6">

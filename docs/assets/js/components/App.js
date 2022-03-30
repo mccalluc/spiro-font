@@ -56,8 +56,8 @@ export default {
         <div class="card-body">
 
           <Input :label="'shrink'" v-model="shrink" />
-          <Input :label="'grow'" v-model="grow" />
-          <Input :label="'bevel'" v-model="bevel" />
+          <Input :label="'grow'"   v-model="grow" />
+          <Input :label="'bevel'"  v-model="bevel" />
 
           <div class="form-group row py-1">
             <div class="col-12">
