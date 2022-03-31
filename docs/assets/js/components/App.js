@@ -33,6 +33,8 @@ export default {
         fontName: 'spiro-font',
         segmentMap: this.segmentMap,
         segments: this.segments,
+        stretch: 1.5,
+        skew: 0.25,
         shrink: this.shrink,
         grow: this.grow,
         bevel: this.bevel
