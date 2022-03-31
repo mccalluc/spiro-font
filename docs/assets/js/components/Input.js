@@ -3,6 +3,11 @@ export default {
     label: String,
     modelValue: Number,
   },
+  computed: {
+    inputId() {
+      return `input-${this.label.replace(/\W+/g, '-')}`;
+    }
+  },
   emits: ['update:modelValue'],
   // Vue's default behavior for .number is:
   //
@@ -14,13 +19,13 @@ export default {
   template: `
     <div class="form-group row py-1">
       <div class="col-6">
-        <label :for="label" v-html="label" />
+        <label :for="inputId" v-html="label" />
       </div>
       <div class="col-6">
         <input
           type="number"
           class="form-control"
-          :id="label"
+          :id="inputId"
           :value="modelValue"
           @input="$emit('update:modelValue', Number($event.target.value))"
         >
