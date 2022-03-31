@@ -12,6 +12,8 @@ export default {
     return {
       segmentMap: this.init.segmentMap,
       segments: this.init.segments,
+      stretch: this.init.stretch,
+      skew: this.init.skew,
       shrink: this.init.shrink,
       grow: this.init.grow,
       bevel: this.init.bevel,
@@ -33,8 +35,8 @@ export default {
         fontName: 'spiro-font',
         segmentMap: this.segmentMap,
         segments: this.segments,
-        stretch: 1.5,
-        skew: 0.25,
+        stretch: this.stretch,
+        skew: this.skew,
         shrink: this.shrink,
         grow: this.grow,
         bevel: this.bevel
@@ -57,9 +59,11 @@ export default {
       <div class="card interactive">
         <div class="card-body">
 
-          <Input :label="'shrink'" v-model="shrink" />
-          <Input :label="'grow'"   v-model="grow" />
-          <Input :label="'bevel'"  v-model="bevel" />
+          <Input :label="'stretch'" v-model="stretch" />
+          <Input :label="'skew'"    v-model="skew" />
+          <Input :label="'shrink'"  v-model="shrink" />
+          <Input :label="'grow'"    v-model="grow" />
+          <Input :label="'bevel'"   v-model="bevel" />
 
           <div class="form-group row py-1">
             <div class="col-12">
