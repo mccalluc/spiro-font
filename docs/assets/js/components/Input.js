@@ -1,4 +1,5 @@
 export default {
+  inheritAttrs: false,
   props: {
     label: String,
     modelValue: Number,
@@ -23,6 +24,7 @@ export default {
       </div>
       <div class="col-6">
         <input
+          v-bind="$attrs"
           type="number"
           class="form-control"
           :id="inputId"

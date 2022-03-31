@@ -59,11 +59,11 @@ export default {
       <div class="card interactive">
         <div class="card-body">
 
-          <Input :label="'stretch'" v-model="stretch" />
-          <Input :label="'skew'"    v-model="skew" />
-          <Input :label="'shrink'"  v-model="shrink" />
-          <Input :label="'grow'"    v-model="grow" />
-          <Input :label="'bevel'"   v-model="bevel" />
+          <Input :label="'stretch'" v-model="stretch" min="0.5"  max="2.0"  step="0.1" />
+          <Input :label="'skew'"    v-model="skew"    min="-1.0" max="1.0"  step="0.1" />
+          <Input :label="'shrink'"  v-model="shrink"  min="0"    max="10"   step="1"/>
+          <Input :label="'grow'"    v-model="grow"    min="0.5"  max="2.0"  step="1"/>
+          <Input :label="'bevel'"   v-model="bevel"   min="0"    max="4"    step="1"/>
 
           <div class="form-group row py-1">
             <div class="col-12">
