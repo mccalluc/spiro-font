@@ -21,9 +21,6 @@ export default {
     charChoices() {
       return Object.keys(this.segmentMap);
     },
-    segmentMapAsText() {
-      return Object.entries(this.segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
-    },
     font() {
       console.groupCollapsed('Font paramters')
       console.log(`segmentMap: ${JSON.stringify(this.segmentMap, null, 2)}`);

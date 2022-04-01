@@ -9,6 +9,17 @@ function makeGlyph(character, path) {
   });
 }
 
+function fillLowerCase(segmentMap) {
+  const chars = new Set(Object.keys(segmentMap));
+  const uppersWithoutLowers = Array.from(chars).filter(
+    char => !chars.has(char.toLowerCase())
+  );
+  const lowersMap = Object.fromEntries(uppersWithoutLowers.map(
+    char => [char.toLowerCase(), segmentMap[char]]
+  ));
+  return {...segmentMap, ...lowersMap};
+}
+
 export function makeFont({fontName, segmentMap, segments, shrink, grow, bevel}) {
   const glyphs = [];
 
@@ -22,8 +33,9 @@ export function makeFont({fontName, segmentMap, segments, shrink, grow, bevel}) 
   glyphs.push(notdefGlyph);
 
   const stencil = new Stencil({segments, shrink, grow, bevel});
-  for (let label in segmentMap) {
-    const path = stencil.getFontPath(segmentMap[label].split(''));
+  const upperAndLowerMap = fillLowerCase(segmentMap);
+  for (let label in upperAndLowerMap) {
+    const path = stencil.getFontPath(upperAndLowerMap[label].split(''));
     glyphs.push(makeGlyph(label, path));
   }
 
