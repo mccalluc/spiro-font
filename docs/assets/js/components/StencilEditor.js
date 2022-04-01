@@ -25,13 +25,12 @@ export default {
       // If not, get rid of it?
       const segment = e.target.id.split('-')[1];
       const prev = this.segmentMap[this.currentChar];
-      delete this.segmentMap[this.currentChar];
-      if (prev.includes(segment)) {
-        // TODO: Let's just use a set, instead of munging strings.
-        this.segmentMap[this.currentChar] = prev.replace(segment, '')
-      } else {
-        this.segmentMap[this.currentChar] = prev + segment;
-      }
+      
+      // TODO: Let's just use a set, instead of munging strings.
+      const newSegments = prev.includes(segment)
+        ? prev.replace(segment, '')
+        : prev + segment;
+      this.segmentMap[this.currentChar] = newSegments;
     }
   },
   mounted() {

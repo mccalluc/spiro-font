@@ -4,13 +4,24 @@ import Style from "./Style.js"
 import StencilEditor from "./StencilEditor.js"
 import Input from "./Input.js"
 
+function fillLowerCase(segmentMap) {
+  const chars = new Set(Object.keys(segmentMap));
+  const uppersWithoutLowers = Array.from(chars).filter(
+    char => !chars.has(char.toLowerCase())
+  );
+  const lowersMap = Object.fromEntries(uppersWithoutLowers.map(
+    char => [char.toLowerCase(), segmentMap[char]]
+  ));
+  return {...segmentMap, ...lowersMap};
+}
+
 export default {
   props: {
     init: Object,
   },
   data() {
     return {
-      segmentMap: this.init.segmentMap,
+      segmentMap: fillLowerCase(this.init.segmentMap),
       segments: this.init.segments,
       shrink: this.init.shrink,
       grow: this.init.grow,
@@ -20,9 +31,6 @@ export default {
   computed: {
     charChoices() {
       return Object.keys(this.segmentMap);
-    },
-    segmentMapAsText() {
-      return Object.entries(this.segmentMap).map(([from, to]) => `${from} ${to}`).join('\n');
     },
     font() {
       console.groupCollapsed('Font paramters')

@@ -1,6 +1,6 @@
 ---
 name: 3×5 Matrix
-sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG !%^*()_-+={}[]|\;"<>,.?/:'
+sampleText: '0123456789 The quick brown fox jumps over the lazy dog. !%^*()_-+={}[]|\;"<>,.?/: Съешь же ещё этих мягких французских булок да выпей чаю'
 init:
   shrink: 12
   grow: 10
@@ -71,32 +71,44 @@ init:
     'Y': 'ACDFHKN',
     'Z': 'ABCFHJMNO',
 
-    'a': 'BDFGHIJLMO',
-    'b': 'ABDFGHJLMN',
-    'c': 'BCDGJNO',
-    'd': 'ABDFGIJLMN',
-    'e': 'ABCDGHIJMNO',
-    'f': 'ABCDGHJM',
-    'g': 'BCDGJLNO',
-    'h': 'ACDFGHIJLMO',
-    'i': 'ABCEHKMNO',
-    'j': 'BCFIJLN',
-    'k': 'ACDFGHJLMO',
-    'l': 'ADGJMNO',
-    'm': 'ACDEFGIJLMO',
-    'n': 'ABDFGIJLMO',
-    'o': 'BDFGIJLN',
-    'p': 'ABDFGHJM',
-    'q': 'BDFGIJLNO',
-    'r': 'ABDFGHJLMO',
-    's': 'BCDHLMN',
-    't': 'ABCEHKN',
-    'u': 'ACDFGIJLNO',
-    'v': 'ACDFGIJLN',
-    'w': 'ACDFGIJKLMO',
-    'x': 'ACDFHJLMO',
-    'y': 'ACDFHKN',
-    'z': 'ABCFHJMNO',
+    # Cyrillic! There's not really enough pixels. :(
+    "А": "BDFGHIJLMO",
+    "Б": "ABCDGJMNLH",
+    "В": "ABDFGHJLMN",
+    "Г": "ABCDGJM",
+    "Д": "ADGJMKLOIFCB",
+    "Е": "ABCDGHIJMNO",
+    "Ж": "ADECFBHJMNKLO",
+    "З": "ABFHLNM",
+    "И": "DGJMBCFILO",
+    "Й": "JMHILOABC",
+    "К": "ACDFGHJLMO",
+    "Л": "ADGJMBCFILO",
+    "М": "ACDEFGIJLMO",
+    "Н": "ACDFGHIJLMO",
+    "О": "BDFGIJLN",
+    "П": "ADGJMBCFILO",
+    "Р": "ABDFGHJM",
+    "С": "BCDGJNO",
+    "Т": "ABCEHKN",
+    "У": "ADHFCKM",
+    "Ф": "GBNIDFJLKE",
+    "Х": "ACDFHJLMO",
+    "Ц": "ADGJKLIFCO",
+    "Ч": "ADHIFCLO",
+    "Ш": "ADGJMNOLIFCK",
+    "Щ": "ADJGKLIFCHO",
+    "Ъ": "ADGJMNLHB",
+    "Ы": "ADGJMNLHFC",
+    "Ь": "ADGJMNLH",
+    "Э": "ABFILNMH",
+    "Ю": "ADGJMKLIFE",
+    "Я": "BCFILOHDJM",
+    "Ё": "ACGHIJMNO",
+    "Є": "CBDGJNOH",
+    "Ї": "HKNAC",
+    "Ў": "GIKNABC",
+
     ' ': ''
   }
   segments: {
