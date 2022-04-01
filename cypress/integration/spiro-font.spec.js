@@ -17,9 +17,9 @@ describe('spiro-font', () => {
 
     cy.contains('0123456789')
 
-    cy.get('#shrink').type('{backspace}{backspace}0')
-    cy.get('#grow').type('{backspace}{backspace}0')
-    cy.get('#bevel').type('{backspace}{backspace}0')
+    cy.get('#input-shrink').type('{backspace}{backspace}0')
+    cy.get('#input-grow').type('{backspace}{backspace}0')
+    cy.get('#input-bevel').type('{backspace}{backspace}0')
 
     cy.get('select').select('A')
   })
