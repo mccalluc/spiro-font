@@ -3,8 +3,6 @@ title: spirografont
 layout: home
 ---
 
-# spirografont
-
 Change the parameters, make something pretty, and waste time.
 
 {% for font in site.segmented %}
