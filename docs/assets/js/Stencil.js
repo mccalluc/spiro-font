@@ -21,11 +21,13 @@ function scale({points, stretch, skew, shrink, grow, bevel}) {
   const scaledUp = points.map((point) => [point[0], 180 - (point[1])]);
 
   const geometry = pairsToGeom(scaledUp);
-  const transformed = transformation.transform(geometry)
-    // Shrink the segments away from each other...
-    .buffer(-shrink, 1)
-    // and then expand with rounded corners...
-    .buffer(grow, bevel);
+  const transformed = transformation.transform(
+    geometry
+      // Shrink the segments away from each other...
+      .buffer(-shrink, 1)
+      // and then expand with rounded corners...
+      .buffer(grow, bevel)
+  );
 
   return geomToPairs(transformed)
 }
