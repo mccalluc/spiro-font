@@ -15,9 +15,9 @@ Like a spirograph, for fonts: Change the parameters, make something pretty, and 
 <thead>
 <tr>
 <th></th>
-<th>uppercase</th>
-<th>lowercase</th>
-<th>numbers</th>
+<th>upper</th>
+<th>lower</th>
+<th>number</th>
 <th>Cyrillic</th>
 </tr>
 </thead>
