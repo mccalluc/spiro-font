@@ -44,22 +44,20 @@ export default class Stencil {
     const path = new opentype.Path();
     const segments = self.segments;
     segmentNames.forEach((name) => {
-      try {
-        const segment = scale({
-          points: segments[name],
-          stretch: self.stretch,
-          skew: self.skew,
-          shrink: self.shrink,
-          grow: self.grow,
-          bevel: self.bevel,
-        });
+      const segment = scale({
+        points: segments[name],
+        stretch: self.stretch,
+        skew: self.skew,
+        shrink: self.shrink,
+        grow: self.grow,
+        bevel: self.bevel,
+      });
+      if (segment.length) {
         path.moveTo(...segment[0]);
         segment.slice(1).forEach((point) => {
           path.lineTo(...point);
         })
         path.lineTo(...segment[0]);
-      } catch(e) {
-        console.warn('Geometry problem', e);
       }
     })
     return path;
