@@ -1,9 +1,9 @@
 ---
-title: spiro-font
+title: spirografont
 layout: home
 ---
 
-# spiro-font
+# spirografont
 
 Like a spirograph, for fonts: Change the parameters, make something pretty, and waste time.
 
@@ -12,4 +12,4 @@ Like a spirograph, for fonts: Change the parameters, make something pretty, and 
 - [{{ font.name }}]({{ url }})
 {% endfor %}
 
-[source code on github](https://github.com/mccalluc/spiro-font)
+[source code on github](https://github.com/mccalluc/spirografont)

@@ -38,7 +38,7 @@ export default {
       console.log(`segments: ${JSON.stringify(this.segments).replaceAll(',"', ',\n  "')}`);
       console.groupEnd();
       const font = makeFont({
-        fontName: 'spiro-font',
+        fontName: 'spirografont',
         segmentMap: this.segmentMap,
         segments: this.segments,
         shrink: this.shrink,

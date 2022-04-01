@@ -1,7 +1,7 @@
 {
-  "name": "spiro-font-tests",
+  "name": "spirografont-tests",
   "version": "1.0.0",
-  "description": "Tests for spiro-font",
+  "description": "Tests for spirografont",
   "main": "index.js",
   "scripts": {
     "test": "npx eslint docs/assets/js/ && npm run cypress:run",

@@ -1,6 +1,6 @@
-describe('spiro-font', () => {
+describe('spirografont', () => {
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:4000/spiro-font/')
+    cy.visit('http://127.0.0.1:4000/spirografont/')
   })
 
   it('works', () => {

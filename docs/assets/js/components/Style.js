@@ -6,12 +6,12 @@ export default {
   },
   computed: {
     cssFontFace() {
-      return makeCssFontFace('spiro-font', this.font);
+      return makeCssFontFace('spirografont', this.font);
     }
   },
   template: `
     <component :is="'style'">
-      .spiro-font {
+      .spirografont {
         display: block; /* "display: none" on load to avoid flash of unstyled text. */
       }
       {{ cssFontFace }}
@@ -20,12 +20,12 @@ export default {
     <details><summary class="btn btn-primary">Copy CSS</summary>
       <pre>
 &lt;style&gt;
-.spiro-font {
-  font-family: 'spiro-font';
+.spirografont {
+  font-family: 'spirografont';
 }
 {{ cssFontFace }}
 &lt;/style&gt;
-&lt;div class="spiro-font"&gt;
+&lt;div class="spirografont"&gt;
   Hello world!
 &lt;/div&gt;
       </pre>

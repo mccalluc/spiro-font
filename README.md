@@ -12,7 +12,7 @@ It also uses [Cypress](https://www.cypress.io/) for end-to-end testing,
 [ESLint](https://eslint.org/) for linting,
 and [Jekyll](https://jekyllrb.com/) for static site generation.
 
-Deployed at: https://mccalluc.github.io/spiro-font/
+Deployed at: https://mccalluc.github.io/spirografont/
 
 When developing locally:
 ```

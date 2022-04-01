@@ -1,9 +1,9 @@
-.spiro-font {
-  font-family: 'spiro-font';
+.spirografont {
+  font-family: 'spirografont';
   font-size: 0.8em;
   display: none; /* To avoid flash of unstyled text. */
 }
-a.spiro-font {
+a.spirografont {
   text-decoration: none;
 }
 #preview {
