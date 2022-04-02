@@ -1,6 +1,6 @@
 ---
 name: Sixteen Segment
-sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG - the quick brown fox jumps over the lazy dog'
+sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG - the quick brown fox jumps over the lazy dog ^*()_-+=[]|<>,?/ Съешь же ещё этих мягких французских булок да выпей чаю'
 init:
   stretch: 0.75
   skew: 0.1
@@ -88,7 +88,53 @@ init:
     "(": "JM",
     "@": "AgaFEdLCB",
     "#": "ILGgFEDd",
-    "^": "JB"
+    "^": "JB",
+    "Ё": "AaGFEDdg",
+    "Ђ": "AaILgC",
+    "Ѓ": "AaFE",
+    "Є": "aAFEDdG",
+    "Ѕ": "aAFGgCdD",
+    "І": "AaILDd",
+    "Ї": "GgLDdAa",
+    "Ј": "BCdDE",
+    "Љ": "FEAILgCd",
+    "Њ": "FEGILgCd",
+    "Ћ": "AaILgC",
+    "Ќ": "FEGJMa",
+    "Ў": "HJKa",
+    "Џ": "FGgBL",
+    "А": "JKgBC",
+    "Б": "AFGgCdDEa",
+    "В": "AFIGgCdDE",
+    "Г": "aAFE",
+    "Д": "IBagGEC",
+    "Е": "AaFGgEDd",
+    "Ж": "HIJKLM",
+    "З": "AaJMdDG",
+    "И": "JKEFBC",
+    "Й": "JKEFaBC",
+    "К": "JMGFE",
+    "Л": "IaBCK",
+    "М": "EFHJBC",
+    "Н": "FEGgBC",
+    "О": "FEDdCBaA",
+    "П": "EFAaBC",
+    "Р": "FAaBgGE",
+    "С": "aAFEDd",
+    "Т": "AaIL",
+    "У": "HJK",
+    "Ф": "IAFEDdCLBa",
+    "Х": "HMJK",
+    "Ц": "FGBgM",
+    "Ч": "HgBC",
+    "Ш": "FEDdCBIL",
+    "Щ": "FIGgCB",
+    "Ъ": "AILgCd",
+    "Ы": "FGLDEBC",
+    "Ь": "FEGDL",
+    "Э": "AaBCdDg",
+    "Ю": "FEGIaBCdL",
+    "Я": "AFGKgCBa",
   }
   segments: {
     "A":[[20,0],[60,0],[70,10],[60,20],[20,20],[10,10]],
