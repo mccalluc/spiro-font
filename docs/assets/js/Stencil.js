@@ -1,4 +1,4 @@
-
+import opentype from 'https://cdn.skypack.dev/opentype.js@1.3.4';
 import jsts from 'https://cdn.skypack.dev/jsts@2.3.0';
 
 const reader = new jsts.io.GeoJSONReader();

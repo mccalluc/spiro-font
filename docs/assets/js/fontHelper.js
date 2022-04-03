@@ -1,3 +1,5 @@
+import opentype from 'https://cdn.skypack.dev/opentype.js@1.3.4';
+
 import Stencil from './Stencil.js';
 
 function makeGlyph(character, path) {
