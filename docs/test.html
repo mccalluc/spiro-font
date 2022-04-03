@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mocha Tests</title>
+  <!-- <link rel="stylesheet" href="node_modules/mocha/mocha.css"> -->
+</head>
+
+<body>
+  <p>
+    I haven't gotten Mocha CLI to work with HTTP ES modules:
+    <a href="https://nodejs.org/api/esm.html#urls">Non-HTTP URLs</a> are supported in Node 17;
+    <a href="https://nodejs.org/api/esm.html#https-and-http-imports">HTTP</a> support is experimental.
+    So instead we'll serve this from Jekyll,
+    and run in the browser, and use Cypress to check the result. 
+  </p>
+  <div id="mocha"></div>
+  <script type="module">
+    import mocha from 'https://cdn.skypack.dev/mocha@9.2.2';
+    import { pairsToGeom, geomToPairs } from './assets/js/Stencil.js';
+
+    mocha.setup('bdd');
+
+    describe('pairs to geom to pairs', () => {
+      it('works', () => {
+        const oldPairs = [[0, 0], [0, 1], [1, 0]];
+        const newGeom = pairsToGeom(oldPairs);
+        const newPairs = geomToPairs(newGeom);
+        assert.equal(oldPairs, newPairs)
+      })
+    });
+
+    mocha.run();
+  </script>
+</body>
+
+</html>

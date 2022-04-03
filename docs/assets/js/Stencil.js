@@ -3,7 +3,7 @@ import {opentype, jsts} from './upstream.js';
 
 const reader = new jsts.io.GeoJSONReader();
 
-function pairsToGeom(pairs) {
+export function pairsToGeom(pairs) {
   // GeoJSON Polygon is actually a list of polygons,
   // with the latter polygons being holes in the first
   const geoJson = { type: 'Polygon', coordinates: [[...pairs, pairs[0]]] };
@@ -11,7 +11,7 @@ function pairsToGeom(pairs) {
   return geometry;
 }
 
-function geomToPairs(geometry) {
+export function geomToPairs(geometry) {
   const pairs = geometry._shell._points._coordinates.map((point) => [point.x, point.y])
   return pairs.slice(1); // Start and end points are equal.
 }

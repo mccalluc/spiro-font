@@ -6,6 +6,6 @@
 // and I'm not sure how to get that conditionality in here without breaking mocha,
 // so it's still pulled in as global in the HTML.
 
-export {default as Raphael} from 'https://cdn.skypack.dev/raphael@2.3.0';
-export {default as opentype} from 'https://cdn.skypack.dev/opentype.js@1.3.4';
-export {default as jsts} from 'https://cdn.skypack.dev/jsts@2.3.0';
+export {default as Raphael} from 'https://cdn.skypack.dev/raphael@2.3.0?min';
+export {default as opentype} from 'https://cdn.skypack.dev/opentype.js@1.3.4?min';
+export {default as jsts} from 'https://cdn.skypack.dev/jsts@2.3.0?min';
