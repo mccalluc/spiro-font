@@ -1,4 +1,4 @@
-import Raphael from 'https://cdn.skypack.dev/raphael@2.3.0';
+import { Raphael } from '../upstream.js';
 
 import { drawSegment } from "../svgHelper.js";
 

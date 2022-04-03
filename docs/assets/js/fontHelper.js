@@ -1,4 +1,4 @@
-import opentype from 'https://cdn.skypack.dev/opentype.js@1.3.4';
+import {opentype} from './upstream.js';
 
 import Stencil from './Stencil.js';
 
