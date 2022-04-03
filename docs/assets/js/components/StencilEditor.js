@@ -1,3 +1,5 @@
+import Raphael from 'https://cdn.skypack.dev/raphael@2.3.0';
+
 import { drawSegment } from "../svgHelper.js";
 
 export default {
