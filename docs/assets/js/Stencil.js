@@ -1,3 +1,6 @@
+
+import jsts from 'https://cdn.skypack.dev/jsts@2.3.0';
+
 const reader = new jsts.io.GeoJSONReader();
 
 function pairsToGeom(pairs) {
