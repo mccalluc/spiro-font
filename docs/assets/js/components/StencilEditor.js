@@ -1,3 +1,5 @@
+import { Raphael } from '../upstream.js';
+
 import { drawSegment } from "../svgHelper.js";
 
 export default {

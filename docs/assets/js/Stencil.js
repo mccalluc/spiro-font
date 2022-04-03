@@ -1,3 +1,6 @@
+import {opentype, jsts} from './upstream.js';
+
+
 const reader = new jsts.io.GeoJSONReader();
 
 function pairsToGeom(pairs) {

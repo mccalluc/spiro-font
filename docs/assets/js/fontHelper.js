@@ -1,3 +1,5 @@
+import {opentype} from './upstream.js';
+
 import Stencil from './Stencil.js';
 
 function makeGlyph(character, path) {
