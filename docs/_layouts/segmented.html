@@ -62,18 +62,35 @@ layout: default
 <script type="module">
   import App from '{{ site.baseurl }}/assets/js/components/App.js'
 
-  const defaultParams = {{ page.init | jsonify }};
-  const urlParams = Object.fromEntries(
+  const defaults = {{ page.init | jsonify }};
+  const overrides = Object.fromEntries(
     Array.from(
       new URL(location.href).searchParams.entries()
-    ).map(([k, v]) => [k, Number(v)])
+    )
   );
+
+  const {segments = '{}', segmentMap = '{}'} = overrides;
+  console.log('seg', segments);
+  console.log('map', segmentMap);
+  const initSegments = {...defaults.segments, ...JSON.parse(segments)};
+  const initSegmentMap = {...defaults.segmentMap, ...JSON.parse(segmentMap)};
+  delete overrides.segments;
+  delete overrides.segmentMap;
+
+  const numericOverrides = Object.fromEntries(
+    Object.entries(overrides).map(([k, v]) => [k, Number(v)])
+  );
+  
   Vue.createApp(
     {
       components: {App}
     },
     {
-      init: {...defaultParams, ...urlParams}
+      init: {
+        ...defaults, ...numericOverrides,
+        segments: initSegments,
+        segmentMap: initSegmentMap
+      }
     }  
   ).mount('#app-container')
 </script>
