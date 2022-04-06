@@ -62,12 +62,18 @@ layout: default
 <script type="module">
   import App from '{{ site.baseurl }}/assets/js/components/App.js'
 
+  const defaultParams = {{ page.init | jsonify }};
+  const urlParams = Object.fromEntries(
+    Array.from(
+      new URL(location.href).searchParams.entries()
+    ).map(([k, v]) => [k, Number(v)])
+  );
   Vue.createApp(
     {
       components: {App}
     },
     {
-      init: {{ page.init | jsonify }}
+      init: {...defaultParams, ...urlParams}
     }  
   ).mount('#app-container')
 </script>
