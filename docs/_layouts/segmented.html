@@ -63,7 +63,7 @@ layout: default
   import App from '{{ site.baseurl }}/assets/js/components/App.js';
   import getInit from '{{ site.baseurl }}/assets/js/getInit.js';
 
-  const defaults = {{ page.init | jsonify }};
+  const defaults = {{ page.defaults | jsonify }};
   const init = getInit({defaults, url: location.href});
   
   Vue.createApp(
@@ -73,5 +73,5 @@ layout: default
     {
       init
     }  
-  ).mount('#app-container')
+  ).mount('#app-container');
 </script>

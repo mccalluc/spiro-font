@@ -3,7 +3,7 @@ name: 3×5×2 Matrix
 sampleText: >
   0123456789 The quick brown fox jumps over the lazy dog. 
   THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG. !@#$$%^*()_-+={}[]|\;"<>,.?/:'
-init:
+defaults:
   stretch: 1
   skew: 0
   shrink: 1.25

@@ -1,7 +1,7 @@
 ---
 name: 3×5 Matrix
 sampleText: '0123456789 The quick brown fox jumps over the lazy dog. !%^*()_-+={}[]|\;"<>,.?/: Съешь же ещё этих мягких французских булок да выпей чаю'
-init:
+defaults:
   stretch: 1
   skew: 0
   shrink: 12

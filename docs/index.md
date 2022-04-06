@@ -31,10 +31,10 @@ Like a spirograph, for fonts: Change the parameters, make something pretty, and 
 <td markdown="1">
 [{{ font.name }}]({{ url }}) 
 </td>
-<td>{% if font.init.segmentMap['Z'] %} ✓ {% endif %}</td>
-<td>{% if font.init.segmentMap['z'] %} ✓ {% endif %}</td>
-<td>{% if font.init.segmentMap['9'] %} ✓ {% endif %}</td>
-<td>{% if font.init.segmentMap['Я'] %} ✓ {% endif %}</td>
+<td>{% if font.defaults.segmentMap['Z'] %} ✓ {% endif %}</td>
+<td>{% if font.defaults.segmentMap['z'] %} ✓ {% endif %}</td>
+<td>{% if font.defaults.segmentMap['9'] %} ✓ {% endif %}</td>
+<td>{% if font.defaults.segmentMap['Я'] %} ✓ {% endif %}</td>
 </tr>
 
 {% endfor %}
