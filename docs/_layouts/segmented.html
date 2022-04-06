@@ -60,37 +60,18 @@ layout: default
 {% endif %}
 
 <script type="module">
-  import App from '{{ site.baseurl }}/assets/js/components/App.js'
+  import App from '{{ site.baseurl }}/assets/js/components/App.js';
+  import getInit from '{{ site.baseurl }}/assets/js/getInit.js';
 
   const defaults = {{ page.init | jsonify }};
-  const overrides = Object.fromEntries(
-    Array.from(
-      new URL(location.href).searchParams.entries()
-    )
-  );
-
-  const {segments = '{}', segmentMap = '{}'} = overrides;
-  console.log('seg', segments);
-  console.log('map', segmentMap);
-  const initSegments = {...defaults.segments, ...JSON.parse(segments)};
-  const initSegmentMap = {...defaults.segmentMap, ...JSON.parse(segmentMap)};
-  delete overrides.segments;
-  delete overrides.segmentMap;
-
-  const numericOverrides = Object.fromEntries(
-    Object.entries(overrides).map(([k, v]) => [k, Number(v)])
-  );
+  const init = getInit({defaults, url: location.href});
   
   Vue.createApp(
     {
       components: {App}
     },
     {
-      init: {
-        ...defaults, ...numericOverrides,
-        segments: initSegments,
-        segmentMap: initSegmentMap
-      }
+      init
     }  
   ).mount('#app-container')
 </script>
