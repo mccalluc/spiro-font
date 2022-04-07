@@ -63,3 +63,7 @@ from [wikipedia](https://en.wikipedia.org/wiki/Seven-segment_display):
 > (in [U.S. Patent 1,126,641](https://patents.google.com/patent/US1126641)),
 > when Carl Kinsley invented a method of telegraphically transmitting letters
 > and numbers and having them printed on tape in a segmented format. 
+
+- [default hexagons](?)
+- [rectangles](?grow=0&shrink=0)
+- [ovals](?grow=12&shrink=9&bevel=3)

@@ -131,3 +131,6 @@ defaults:
     'O': [[60, 120], [90, 120], [90, 150], [60, 150]]
   }
 ---
+- [default](?)
+- [diamonds](?shrink=14&grow=16&bevel=0)
+- [block](?shrink=0&grow=10&bevel=1)

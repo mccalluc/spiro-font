@@ -140,3 +140,5 @@ defaults:
 ---
 - [default](?)
 - [block](?shrink=0&grow=5)
+- [equilateral](?shrink=1.5&stretch=1.1&skew=-0.6)
+- [tessellate](?shrink=8&grow=14)
