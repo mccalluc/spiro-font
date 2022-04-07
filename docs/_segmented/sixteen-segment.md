@@ -1,7 +1,7 @@
 ---
 name: Sixteen Segment
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG - the quick brown fox jumps over the lazy dog ^*()_-+=[]|<>,?/ Съешь же ещё этих мягких французских булок да выпей чаю'
-init:
+defaults:
   stretch: 0.75
   skew: 0.1
   shrink: 0
@@ -156,3 +156,5 @@ init:
 ---
 There's a surprising diversity in letterforms for sixteen segment displays.
 These are just the shapes that seemed best to me: Tweak as needed.
+- [default](?)
+- [back slant](?skew=-0.2)
