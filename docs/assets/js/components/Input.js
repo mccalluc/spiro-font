@@ -9,14 +9,19 @@ export default {
       return `input-${this.label.replace(/\W+/g, '-')}`;
     }
   },
-  emits: ['update:modelValue'],
-  // Vue's default behavior for .number is:
-  //
-  // > If the value cannot be parsed with parseFloat(),
-  // > then the original value is used instead.
-  // https://vuejs.org/guide/essentials/forms.html#number
-  //
-  // We never want a non-numeric value, so instead we use Number() explicitly. 
+  methods: {
+    onInput(event) {
+      // Vue's default behavior for .number is:
+      //
+      // > If the value cannot be parsed with parseFloat(),
+      // > then the original value is used instead.
+      // https://vuejs.org/guide/essentials/forms.html#number
+      //
+      // We never want a non-numeric value, so instead we use Number() explicitly.
+      this.$emit('update:modelValue', Number(event.target.value))
+    }
+  },
+  emits: ['update:modelValue'], 
   template: `
     <div class="form-group row py-1">
       <div class="col-6">
@@ -29,7 +34,7 @@ export default {
           class="form-control"
           :id="inputId"
           :value="modelValue"
-          @input="$emit('update:modelValue', Number($event.target.value))"
+          @input="onInput"
         >
       </div>
     </div>
