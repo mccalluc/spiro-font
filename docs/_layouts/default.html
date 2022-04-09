@@ -11,27 +11,41 @@
     <title>spiro-font | {{ page.title }}</title>
   </head>
   <body class="bg-light">
-    <header class="border-bottom bg-white pt-2" style="height: 2em;">
-      <div class="container">
+    <header class="border-bottom bg-white pt-2">
+      <div class="container d-flex flex-wrap">
+        <details class="me-auto">
+          <summary id="get-started">Get started</summary>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                The <b>shrink</b> and <b>grow</b> settings are applied in succession:
+                you can shrink the segments away from each other,
+                and then expand them outward. The <b>bevel</b> setting controls how many points
+                are used at the corners: "0" or "1" will produce sharp edges,
+                while "3" will be almost indistinguishable from a smooth curve.
+              </p>
+              <p>
+                To use your font in a desktop application, you can <b>Download font</b>,
+                or to use it in a web page, <b>Copy CSS</b>.
+              </p>
+            </div>
+            <div class="col-6">
+              <p>
+                You can also control the <b>stencil</b> used to print individual charaters.
+                The same stencil is used for every character in a font:
+                You can drag the circular <b>control points</b> to change the shape of each segment,
+                or you can select a particular character in the menu, and click on segments
+                to turn them on and off just for that one character.
+              </p>
+            </div>
+          </div>
+        </details>
         <a href="{{ site.url }}{{ site.baseurl }}/" class="spiro-font">spiro-font</a>
       </div>
     </header>
     <div class="container">
       <main>
         {{ content }}
-
-        <!-- Optional JavaScript; choose one of the two! -->
-
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <!--
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        -->
-
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-        -->
       </main>
     </div>
   </body>
