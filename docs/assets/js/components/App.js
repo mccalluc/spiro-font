@@ -30,6 +30,20 @@ export default {
       bevel: this.init.bevel,
     }
   },
+  watch: {
+    segmentMap: {
+      handler(newSegmentMap) {
+        console.log('new sm', JSON.stringify(newSegmentMap))
+      },
+      deep: true
+    },
+    segments: {
+      handler(newSegments) {
+        console.log('new s', JSON.stringify(newSegments))
+      },
+      deep: true
+    },
+  },
   computed: {
     charChoices() {
       return Object.keys(this.segmentMap);

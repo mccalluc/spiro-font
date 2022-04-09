@@ -1,5 +1,7 @@
+import replaceUrlParam from "../replaceUrlParam.js";
+
 export default {
-  inheritAttrs: false,
+  inheritAttrs: false, // attrs are passed to sub-component; not used on top-level.
   props: {
     label: String,
     modelValue: Number,
@@ -11,11 +13,6 @@ export default {
   },
   methods: {
     onInput(event) {
-      const oldParamsObj = Object.fromEntries(new URL(location).searchParams);
-      const value = event.target.value;
-      const newParamsObj = {...oldParamsObj, [this.label]: value};
-      const newParamsStr = new URLSearchParams(newParamsObj).toString();
-      history.replaceState(null, '', `?${newParamsStr}`)
       // Vue's default behavior for .number is:
       //
       // > If the value cannot be parsed with parseFloat(),
@@ -23,7 +20,9 @@ export default {
       // https://vuejs.org/guide/essentials/forms.html#number
       //
       // We never want a non-numeric value, so instead we use Number() explicitly.
-      this.$emit('update:modelValue', Number(event.target.value))
+      const value = Number(event.target.value);
+      replaceUrlParam(this.label, value);
+      this.$emit('update:modelValue', value)
     }
   },
   emits: ['update:modelValue'], 
