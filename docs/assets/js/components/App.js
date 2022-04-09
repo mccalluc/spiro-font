@@ -1,4 +1,5 @@
 import makeFont from "../makeFont.js"
+import replaceUrlParam from "../replaceUrlParam.js";
 
 import Style from "./Style.js"
 import StencilEditor from "./StencilEditor.js"
@@ -31,15 +32,18 @@ export default {
     }
   },
   watch: {
+    // Watches, and deep comparisons in particular, are usually not
+    // the best option, but in this case they let us handle these
+    // two structured parameters the same way, in the same place.
     segmentMap: {
       handler(newSegmentMap) {
-        console.log('new sm', JSON.stringify(newSegmentMap))
+        replaceUrlParam('segmentMap', JSON.stringify(newSegmentMap));
       },
       deep: true
     },
     segments: {
       handler(newSegments) {
-        console.log('new s', JSON.stringify(newSegments))
+        replaceUrlParam('segments', JSON.stringify(newSegments));
       },
       deep: true
     },
