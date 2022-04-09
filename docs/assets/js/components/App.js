@@ -1,4 +1,4 @@
-import { makeFont } from "../fontHelper.js"
+import makeFont from "../makeFont.js"
 
 import Style from "./Style.js"
 import StencilEditor from "./StencilEditor.js"

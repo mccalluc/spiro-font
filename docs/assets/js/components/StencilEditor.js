@@ -1,6 +1,6 @@
 import { Raphael } from '../upstream.js';
 
-import { drawSegment } from "../svgHelper.js";
+import drawSegment from "../drawSegment.js";
 
 export default {
   props: {
