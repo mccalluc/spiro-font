@@ -1,4 +1,4 @@
-import { makeFont } from "../fontHelper.js"
+import makeFont from "../makeFont.js"
 
 import Style from "./Style.js"
 import StencilEditor from "./StencilEditor.js"
@@ -63,7 +63,7 @@ export default {
     Input,
   },
   template: `
-    <div class="col-6">
+    <div class="col-12 col-sm-6 mb-3">
       <div class="card interactive">
         <div class="card-body">
 
@@ -93,7 +93,7 @@ export default {
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-sm-6 mb-3">
       <div class="card interactive">
         <div class="card-body">
           <StencilEditor

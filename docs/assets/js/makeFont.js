@@ -11,7 +11,7 @@ function makeGlyph(character, path) {
   });
 }
 
-export function makeFont({fontName, segmentMap, segments, stretch, skew, shrink, grow, bevel}) {
+export default function makeFont({fontName, segmentMap, segments, stretch, skew, shrink, grow, bevel}) {
   const glyphs = [];
 
   // The .notdef glyph is required.
