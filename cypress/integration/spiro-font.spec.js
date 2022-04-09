@@ -10,10 +10,10 @@ describe('spiro-font', () => {
     
     // <details> visibility not handled.
     // https://github.com/cypress-io/cypress/issues/20706
-    cy.contains('Getting started').closest('details').should('not.have.attr', 'open')
-    cy.contains('Getting started').click()
-    cy.contains('Getting started').closest('details').should('have.attr', 'open')
-    cy.contains('Getting started').click()
+    cy.contains('Get started').closest('details').should('not.have.attr', 'open')
+    cy.contains('Get started').click()
+    cy.contains('Get started').closest('details').should('have.attr', 'open')
+    cy.contains('Get started').click()
 
     cy.contains('0123456789')
 
