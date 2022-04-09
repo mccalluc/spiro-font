@@ -29,7 +29,7 @@ layout: default
   import getInit from '{{ site.baseurl }}/assets/js/getInit.js';
 
   const defaults = {{ page.defaults | jsonify }};
-  const init = getInit({defaults, url: location.href});
+  const init = getInit(defaults);
   
   Vue.createApp(
     {
