@@ -28,6 +28,12 @@ layout: default
   import App from '{{ site.baseurl }}/assets/js/components/App.js';
   import getInit from '{{ site.baseurl }}/assets/js/getInit.js';
 
+  // We store parameters in the URL hash
+  // (to avoid length limits on queries),
+  // but changing the link doesn't trigger getInit,
+  // so we need to set this event handler to force reload:
+  window.onhashchange = () => { location.reload(); }
+
   const defaults = {{ page.defaults | jsonify }};
   const init = getInit(defaults);
   
