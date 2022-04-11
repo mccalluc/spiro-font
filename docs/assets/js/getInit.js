@@ -1,8 +1,6 @@
-export default function getInit({defaults, url}) {
+export default function getInit(defaults) {
   const overrides = Object.fromEntries(
-    Array.from(
-      new URL(url).searchParams.entries()
-    )
+    new URLSearchParams(location.hash.slice(1))
   );
 
   const {segments = '{}', segmentMap = '{}'} = overrides;

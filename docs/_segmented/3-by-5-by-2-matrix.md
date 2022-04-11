@@ -138,7 +138,7 @@ defaults:
     'n': [[60, 120], [60, 150], [30, 150]],
     'o': [[90, 120], [90, 150], [60, 150]]}
 ---
-- [default](?)
-- [block](?shrink=0&grow=5)
-- [equilateral](?shrink=1.5&stretch=1.1&skew=-0.6)
-- [tessellate](?shrink=8&grow=14)
+- [default](#)
+- [block](#shrink=0&grow=5)
+- [equilateral](#shrink=1.5&stretch=1.1&skew=-0.6)
+- [tessellate](#shrink=8&grow=14)

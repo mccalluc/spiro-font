@@ -156,5 +156,5 @@ defaults:
 ---
 There's a surprising diversity in letterforms for sixteen segment displays.
 These are just the shapes that seemed best to me: Tweak as needed.
-- [default](?)
-- [back slant](?skew=-0.2)
+- [default](#)
+- [back slant](#skew=-0.2)

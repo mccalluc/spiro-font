@@ -25,10 +25,12 @@ export default {
     segmentClickHandler(e) {
       // TODO: Is the label available?
       // If not, get rid of it?
+      // https://github.com/mccalluc/spiro-font/issues/30
       const segment = e.target.id.split('-')[1];
       const prev = this.segmentMap[this.currentChar];
       
       // TODO: Let's just use a set, instead of munging strings.
+      // https://github.com/mccalluc/spiro-font/issues/29
       const newSegments = prev.includes(segment)
         ? prev.replace(segment, '')
         : prev + segment;
