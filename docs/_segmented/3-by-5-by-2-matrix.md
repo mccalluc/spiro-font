@@ -5,6 +5,7 @@ sampleText: >
   THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG. !@#$$%^*()_-+={}[]|\;"<>,.?/:'
 defaults:
   stretch: 1
+  pad: -3
   skew: 0
   shrink: 1.25
   grow: 0

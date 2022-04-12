@@ -3,6 +3,7 @@ name: 3×5 Matrix
 sampleText: '0123456789 The quick brown fox jumps over the lazy dog. !%^*()_-+={}[]|\;"<>,.?/: Съешь же ещё этих мягких французских булок да выпей чаю'
 defaults:
   stretch: 1
+  pad: 0
   skew: 0
   shrink: 12
   grow: 10

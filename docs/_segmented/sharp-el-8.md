@@ -3,6 +3,7 @@ name: Sharp EL-8
 sampleText: '0123456789'
 defaults:
   stretch: 1
+  pad: 0
   skew: 0
   shrink: 0
   grow: 4

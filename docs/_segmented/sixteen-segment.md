@@ -3,6 +3,7 @@ name: Sixteen Segment
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG - the quick brown fox jumps over the lazy dog ^*()_-+=[]|<>,?/ Съешь же ещё этих мягких французских булок да выпей чаю'
 defaults:
   stretch: 0.75
+  pad: 2
   skew: 0.1
   shrink: 0
   grow: 3
