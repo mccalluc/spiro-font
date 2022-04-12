@@ -2,7 +2,7 @@ import {opentype} from './upstream.js';
 
 import Stencil from './Stencil.js';
 
-function makeGlyph(character, path, pad) {
+function makeGlyph({character, path, pad}) {
   const advanceWidth = 130 + pad * 5
   console.log('aw', advanceWidth);
   return new opentype.Glyph({
@@ -26,9 +26,9 @@ export default function makeFont({fontName, segmentMap, segments, stretch, pad, 
   glyphs.push(notdefGlyph);
 
   const stencil = new Stencil({segments, stretch, pad, skew, shrink, grow, bevel});
-  for (let label in segmentMap) {
-    const path = stencil.getFontPath(segmentMap[label].split(''));
-    glyphs.push(makeGlyph(label, path, pad));
+  for (let character in segmentMap) {
+    const path = stencil.getFontPath(segmentMap[character].split(''));
+    glyphs.push(makeGlyph({character, path, pad}));
   }
 
   const font = new opentype.Font({
