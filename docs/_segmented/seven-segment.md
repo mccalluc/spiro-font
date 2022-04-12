@@ -3,6 +3,7 @@ name: Seven Segment
 sampleText: '0123456789 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
 defaults:
   stretch: 1
+  pad: 0
   skew: 0
   shrink: 8
   grow: 11

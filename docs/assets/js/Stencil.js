@@ -16,7 +16,7 @@ function geomToPairs(geometry) {
   return pairs.slice(1); // Start and end points are equal.
 }
 
-function scale({points, stretch, skew, shrink, grow, bevel}) {
+function scale({points, stretch, pad, skew, shrink, grow, bevel}) {
   const transformation = new jsts.geom.util.AffineTransformation();
   transformation.scale(stretch, 1).shear(skew, 0);
 
@@ -36,9 +36,10 @@ function scale({points, stretch, skew, shrink, grow, bevel}) {
 }
 
 export default class Stencil {
-  constructor({segments, stretch, skew, shrink, grow, bevel}) {
+  constructor({segments, stretch, pad, skew, shrink, grow, bevel}) {
     self.segments = segments;
     self.stretch = stretch;
+    self.pad = pad;
     self.skew = skew;
     self.shrink = shrink;
     self.grow = grow;
@@ -52,6 +53,7 @@ export default class Stencil {
       const segment = scale({
         points: segments[name],
         stretch: self.stretch,
+        pad: self.pad,
         skew: self.skew,
         shrink: self.shrink,
         grow: self.grow,

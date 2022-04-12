@@ -25,6 +25,7 @@ export default {
       segmentMap: fillLowerCase(this.init.segmentMap),
       segments: this.init.segments,
       stretch: this.init.stretch,
+      pad: this.init.pad,
       skew: this.init.skew,
       shrink: this.init.shrink,
       grow: this.init.grow,
@@ -53,15 +54,12 @@ export default {
       return Object.keys(this.segmentMap);
     },
     font() {
-      console.groupCollapsed('Font paramters')
-      console.log(`segmentMap: ${JSON.stringify(this.segmentMap, null, 2)}`);
-      console.log(`segments: ${JSON.stringify(this.segments).replaceAll(',"', ',\n  "')}`);
-      console.groupEnd();
       const font = makeFont({
         fontName: 'spiro-font',
         segmentMap: this.segmentMap,
         segments: this.segments,
         stretch: this.stretch,
+        pad: this.pad,
         skew: this.skew,
         shrink: this.shrink,
         grow: this.grow,
@@ -86,10 +84,11 @@ export default {
         <div class="card-body">
 
           <Input :label="'stretch'" v-model="stretch" min="0.5"  max="2.0"  step="0.1" />
+          <Input :label="'pad'"     v-model="pad"     min="-10"  max="10"   step="1"   />
           <Input :label="'skew'"    v-model="skew"    min="-1.0" max="1.0"  step="0.1" />
-          <Input :label="'shrink'"  v-model="shrink"  min="0"    max="20"   step="1"/>
-          <Input :label="'grow'"    v-model="grow"    min="0"    max="20"   step="1"/>
-          <Input :label="'bevel'"   v-model="bevel"   min="0"    max="4"    step="1"/>
+          <Input :label="'shrink'"  v-model="shrink"  min="0"    max="20"   step="1"   />
+          <Input :label="'grow'"    v-model="grow"    min="0"    max="20"   step="1"   />
+          <Input :label="'bevel'"   v-model="bevel"   min="0"    max="4"    step="1"   />
 
           <div class="form-group row py-1">
             <div class="col-12">
