@@ -39,6 +39,7 @@ export default function drawSegment({raphael, label, segments, segmentClickHandl
     this.attr({cx, cy});
     const newSegments = getSegments(raphael)
     segments[label] = newSegments[label];
+    console.log(`'${label}': ${JSON.stringify(segments[label])}`)
   });
 }
 
