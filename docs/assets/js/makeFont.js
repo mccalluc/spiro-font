@@ -4,7 +4,6 @@ import Stencil from './Stencil.js';
 
 function makeGlyph({character, path, pad}) {
   const advanceWidth = 130 + pad * 5
-  console.log('aw', advanceWidth);
   return new opentype.Glyph({
     name: character,
     unicode: character.codePointAt(),

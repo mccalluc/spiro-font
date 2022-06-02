@@ -35,6 +35,7 @@ export default {
         ? prev.replace(segment, '')
         : prev + segment;
       this.segmentMap[this.currentChar] = newSegments;
+      console.log(`'${this.currentChar}': '${newSegments}'`)
     }
   },
   mounted() {
