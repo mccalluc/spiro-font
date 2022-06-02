@@ -77,7 +77,7 @@ defaults:
     'W': 'AaCcDdFfGgIiJjKkLlMO',
     'X': 'AaCcDdFHhjLlMmOo',
     'Y': 'AaCcDdFfHhIKkNn',
-    'Z': 'AaBbCceFHhjKMmNnOo',
+    'Z': 'AaBbCceFHMmNnOogJ',
     ' ': '',
 
     'a': 'gHhiJjLlMmNOo',
