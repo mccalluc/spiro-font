@@ -25,7 +25,7 @@ defaults:
     '!': 'BbEeHNn',
     '@': 'aBbCcDFfgHIiJjLlMmNnO',
     '#': 'DdeFfgJjKILl',
-    '$': '',
+    '$': 'BbEdFHhkJjNln',
     '%': 'AaeFfgHhIKJjOo',
     '^': 'BbDdFf',
     '*': 'DdFfHhJjLl',
